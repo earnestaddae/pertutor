@@ -1,0 +1,17 @@
+<h2>Adding Channel 🤝!</h2>
+<p class="font-weight-light text-secondary">It's free and only takes a minute.</p>
+<%= simple_form_for(account) do |f| %>
+  <%= f.error_notification %>
+
+  <fieldset class="form-fieldset">
+    <legend>Create Channel</legend>
+
+    <%= f.input :name, placeholder: "Channel name", wrapper_html: {class: "form-group"}, input_html: { class: "form-control" } %>
+    <%= f.input :subdomain, placeholder: "Example mychannel", hint: "We create mychannel.pertutor.com for you. Keep it simple 😀", hint_html: { class: "font-weight-bold" }, wrapper_html: {class: "form-group"}, input_html: { class: "form-control" } %>
+  </fieldset>
+
+  <%#= recaptcha_tags %>
+  <div class="mt-2"></div>
+
+  <%= f.button :submit, @account.new_record? ? "Create Channel": "Update Channel", class: "btn btn-success" %>
+<% end %>

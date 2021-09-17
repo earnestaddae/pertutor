@@ -1,0 +1,14 @@
+<!-- Sidebar header -->
+<div class="sidebar-header" style="background-color:  <%= current_account&.sidebar_header_color %>;">
+  <a href="<%= root_url(subdomain: current_account.subdomain) %>" class="logo">
+    <% unless current_account.account_logo.attached? %>
+      <%= image_tag("http://placeimg.com/120/120/any", id: "main-logo", class: "rounded-circle") %>
+    <% end %>
+    <%= image_tag(current_account.account_logo, id: "main-logo", class: "rounded-circle") if current_account.account_logo.attached? %>
+    <%= current_account.name %>
+  </a>
+  <a href="#" class="nav-link nav-icon rounded-circle ml-auto" data-toggle="sidebar">
+    <i class="material-icons">close</i>
+  </a>
+</div>
+<!-- /Sidebar header -->

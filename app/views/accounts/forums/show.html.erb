@@ -1,0 +1,57 @@
+<!-- Breadcrumb -->
+<nav aria-label="breadcrumb card-body">
+  <ol class="breadcrumb border breadcrumb-style1">
+    <li class="breadcrumb-item"><a href="<%= root_url(subdomain: current_account.subdomain) %>">Home</a></li>
+    <li class="breadcrumb-item"><a href="<%= forums_path %>">Discussions</a></li>
+    <li class="breadcrumb-item active" aria-current="page"><%= @forum&.title %></li>
+  </ol>
+</nav>
+<!-- /Breadcrumb -->
+
+<!-- Forum Detail -->
+    <div class="inner-main-body p-2 p-sm-3">
+      <a href=" <%= forums_path %>" class="btn btn-light btn-sm mb-3 has-icon"><i class="fa fa-arrow-left mr-2"></i>Back</a>
+      <div class="card mb-2">
+        <div class="card-body">
+          <div class="media forum-item">
+            <a href="javascript:void(0)" class="card-link">
+              <%= image_tag(gravatar_image_url(@forum.user.email, secure: false), class: "rounded-circle", width: 50) %>
+              <small class="d-block text-center text-muted"> <%= @forum&.user&.username.capitalize %></small>
+            </a>
+            <div class="media-body ml-3">
+              <a href="javascript:void(0)" class="text-secondary"> <%= @forum&.user&.username.capitalize %></a>
+              <small class="text-muted ml-2">1 hour ago</small>
+              <h5 class="mt-1"> <%= @forum&.title %></h5>
+              <div class="mt-3 font-size-sm">
+                 <%= @forum&.body %>
+              </div>
+            </div>
+            <div class="text-muted small text-center">
+              <span class="d-none d-sm-inline-block"><i class="far fa-eye"></i> 19</span>
+              <span><i class="far fa-comment ml-2"></i> 3</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card mb-2">
+        <div class="card-body">
+          <div class="media forum-item">
+            <a href="javascript:void(0)" class="card-link">
+              <img src="../../../dist/img/user2.svg" class="rounded-circle" width="50" alt="User">
+              <small class="d-block text-center text-muted">Pro</small>
+            </a>
+            <div class="media-body ml-3">
+              <a href="javascript:void(0)" class="text-secondary">drewdan</a>
+              <small class="text-muted ml-2">1 hour ago</small>
+              <div class="mt-3 font-size-sm">
+                <p>What exactly doesn't work with your ajax calls?</p>
+                <p>Also, WebSockets are a great solution for realtime data on a dashboard. Laravel offers this out of the box using broadcasting</p>
+              </div>
+              <button class="btn btn-xs text-muted has-icon"><i class="material-icons mr-1">favorite</i>1</button>
+              <a href="javascript:void(0)" class="text-muted small">Reply</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- /Forum Detail -->

@@ -1,0 +1,17 @@
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-lg-8 offset-lg-2 col-sm-12 col-md-6 justify-content-center align-items-start mt-5 mb-5">
+      <div class="card mb-3">
+        <div class="card-body p-4">
+          <h2>Accepting Invitation</h2>
+          <p class="font-weight-light text-secondary">You are accepting an invitation to join <%= current_account.name %>.</p>
+            <% if !user_signed_in? %>
+              <%= render "anonymous_user_accept" %>
+            <% else %>
+              <%= render "signed_user_accept" %>
+            <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

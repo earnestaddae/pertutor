@@ -1,0 +1,23 @@
+<div class="container">
+  <div class="row">
+    <div class="col-lg-8 offset-lg-2 col-sm-12 col-md-6 justify-content-center align-items-start mb-5 p-1">
+      <div class="card mb-3">
+        <div class="card-body p-4">
+           <% if owner? %>
+           <h3>Hi <%= current_account&.owner&.username&.capitalize %></h3>
+            <p class="font-weight-light text-secondary"> Share this form to let users join
+              <strong>You</strong> on
+                <strong><%= root_url(subdomain: current_account.subdomain) %></strong>
+              </p>
+            <% else %>
+            <h3>Welcome</h3>
+              <p class="font-weight-light text-secondary">You've been invited to join <strong> <%= current_account&.owner&.username&.capitalize %></strong> on
+                <strong><%= root_url(subdomain: current_account.subdomain) %></strong>
+              </p>
+           <% end %>
+            <%= render "form", user: @user %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

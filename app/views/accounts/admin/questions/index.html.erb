@@ -1,0 +1,131 @@
+<div class="inner-wrapper">
+
+  <!-- Inner sidebar -->
+  <div class="inner-sidebar">
+
+    <!-- Inner sidebar header -->
+    <div class="inner-sidebar-header justify-content-center">
+      <a href="<%= admin_root_path %>" class="btn btn-info has-icon btn-block" type="button">
+        <i class="fas fa-tachometer-alt mr-2"></i> Dashboard
+      </a>
+    </div>
+    <!-- /Inner sidebar header -->
+
+    <!-- Inner sidebar body -->
+    <div class="inner-sidebar-body p-0">
+      <div class="p-3 h-100" data-simplebar>
+        <div class="list-group list-group-sm list-g list-group-borderless list-group-flush">
+          <button type="button" class="list-group-item list-group-item-action has-icon active"><i class="fas fa-inbox mr-2"></i>Questions<span class="badge badge-pill badge-primary ml-auto"><%= @questions.count %></span></button>
+          <!-- <button type="button" class="list-group-item list-group-item-action has-icon"><i class="mr-2" data-feather="star"></i>Starred<span class="badge badge-pill badge-warning ml-auto">2</span></button> -->
+          <!-- <button type="button" class="list-group-item list-group-item-action has-icon"><i class="mr-2" data-feather="send"></i>Sent</button> -->
+          <!-- <button type="button" class="list-group-item list-group-item-action has-icon"><i class="mr-2" data-feather="alert-circle"></i>Spam</button> -->
+          <!-- <button type="button" class="list-group-item list-group-item-action has-icon"><i class="mr-2" data-feather="trash"></i></i>Trash</button> -->
+        </div>
+        <!-- <label class="small text-secondary mt-3">Categories</label> -->
+       <!--  <div class="list-group list-group-sm list-g list-group-borderless list-group-flush">
+          <button type="button" class="list-group-item list-group-item-action has-icon"><i class="mr-2" data-feather="users"></i>Social<span class="badge badge-pill badge-secondary ml-auto">8</span></button>
+          <button type="button" class="list-group-item list-group-item-action has-icon"><i class="mr-2" data-feather="refresh-cw"></i>Updates<span class="badge badge-pill badge-secondary ml-auto">3</span></button>
+          <button type="button" class="list-group-item list-group-item-action has-icon"><i class="mr-2" data-feather="message-circle"></i>Forums</button>
+          <button type="button" class="list-group-item list-group-item-action has-icon"><i class="mr-2" data-feather="tag"></i>Promotions<span class="badge badge-pill badge-secondary ml-auto">5</span></button>
+        </div> -->
+        <!-- <label class="small text-secondary mt-3 d-block">Labels</label> -->
+        <!-- <div class="list-with-gap">
+          <button class="btn btn-xs btn-light has-icon" type="button"><i class="mr-1" data-feather="tag"></i>Work</button>
+          <button class="btn btn-xs btn-light has-icon" type="button"><i class="mr-1" data-feather="tag"></i>Music</button>
+          <button class="btn btn-xs btn-light has-icon" type="button"><i class="mr-1" data-feather="tag"></i>Film</button>
+          <button class="btn btn-xs btn-light has-icon" type="button"><i class="mr-1" data-feather="tag"></i>Photography</button>
+          <button class="btn btn-xs btn-light has-icon" type="button"><i class="mr-1" data-feather="tag"></i>Holidays</button>
+        </div> -->
+      </div>
+    </div>
+    <!-- /Inner sidebar body -->
+  </div>
+  <!-- /Inner sidebar -->
+
+  <!-- Inner main -->
+  <div class="inner-main collapse transition-none show">
+
+    <!-- Inner main header -->
+    <div class="inner-main-header">
+      <a class="nav-link nav-icon rounded-circle nav-link-faded mr-3 d-md-none" href="<%= admin_root_path %>" data-toggle="inner-sidebar"><i class="fas fa-tachometer-alt"></i></a>
+      <div class="text-nowrap mr-2">
+        <h5 class="mb-0">Questions</h5>
+        <span class="font-size-sm text-muted d-none d-sm-block"> <%= pluralize(@questions.count, "question") %></span>
+      </div>
+      <span class="input-icon input-icon-sm ml-auto w-auto">
+        <i class="material-icons">search</i>
+        <input type="text" class="form-control form-control-sm bg-gray-200 border-gray-200" placeholder="Search mail">
+      </span>
+    </div>
+    <!-- /Inner main header -->
+
+    <!-- Inner main body -->
+    <div class="inner-main-body p-0 bg-white">
+      <div class="card rounded-0">
+        <ul class="list-group list-group-sm list-group-flush sticky-top border-bottom">
+          <li class="list-group-item has-icon">
+            <!-- Check All -->
+            <!-- <div class="custom-control custom-control-nolabel custom-checkbox mr-2" data-toggle="tooltip" data-trigger="hover" title="Select all">
+              <input type="checkbox" class="custom-control-input" id="check-all" data-toggle="mail-checkbox" data-check="all-toggle">
+              <label for="check-all" class="custom-control-label"></label>
+            </div> -->
+            <!-- Custom check -->
+           <!--  <div class="dropdown mr-2">
+              <button class="btn text-secondary dropdown-toggle btn-icon no-caret btn-xs" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fas fa-chevron-down"></i>
+              </button>
+              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <button class="dropdown-item" data-toggle="mail-checkbox" data-check="all" type="button">All</button>
+                <button class="dropdown-item" data-toggle="mail-checkbox" data-check="none" type="button">None</button>
+                <button class="dropdown-item" data-toggle="mail-checkbox" data-check="read" type="button">Read</button>
+                <button class="dropdown-item" data-toggle="mail-checkbox" data-check="unread" type="button">Unread</button>
+                <button class="dropdown-item" data-toggle="mail-checkbox" data-check="starred" type="button">Starred</button>
+                <button class="dropdown-item" data-toggle="mail-checkbox" data-check="unstarred" type="button">Unstarred</button>
+              </div>
+            </div> -->
+            <!-- Refresh -->
+            <!-- <button class="btn text-primary btn-icon btn-sm" type="button" data-toggle="tooltip" data-trigger="hover" title="Refresh"><i class="fas fa-sync-alt"></i></button> -->
+            <!-- Bulk action -->
+           <!--  <div class="btn-group btn-group-sm ml-1" role="group" id="bulk-mail" hidden>
+              <button type="button" class="btn has-icon text-success" data-toggle="tooltip" data-trigger="hover" title="Archive"><i data-feather="archive"></i></button>
+              <button type="button" class="btn has-icon text-info" data-toggle="tooltip" data-trigger="hover" title="Report spam"><i data-feather="alert-octagon"></i></button>
+              <button type="button" class="btn has-icon text-danger" data-toggle="tooltip" data-trigger="hover" title="Delete"><i data-feather="trash"></i></button>
+              <button type="button" class="btn has-icon no-caret dropdown-toggle" data-toggle="dropdown" data-display="static"><i data-feather="chevron-down"></i></button>
+              <div class="dropdown-menu dropdown-menu-right dropdown-menu-sm-left">
+                <button class="dropdown-item" type="button">Move</button>
+                <button class="dropdown-item" type="button">Mark as read</button>
+                <button class="dropdown-item" type="button">Mark as unread</button>
+                <button class="dropdown-item" type="button">Mute</button>
+                <div class="dropdown-divider"></div>
+                <h6 class="dropdown-header text-muted">Label as</h6>
+                <button class="dropdown-item" type="button">Social</button>
+                <button class="dropdown-item" type="button">Promotions</button>
+                <button class="dropdown-item" type="button">Updates</button>
+                <button class="dropdown-item" type="button">Jobstreet</button>
+              </div>
+            </div> -->
+            <!-- Caption & pagination -->
+            <div class="ml-auto flex-center">
+              <small class="text-secondary mr-2 d-none d-sm-block">1-10 of 347</small>
+              <button class="btn btn-sm btn-light btn-icon border-0 rounded-circle"><i class="material-icons">chevron_left</i></button>
+              <button class="btn btn-sm btn-light btn-icon border-0 rounded-circle"><i class="material-icons">chevron_right</i></button>
+            </div>
+          </li>
+        </ul>
+        <ul class="list-group list-group-sm list-group-flush" id="mail-item-wrapper">
+          <% if @questions.any? %>
+            <% @questions.each do |question| %>
+              <%= render question %>
+            <% end %>
+          <% else %>
+            <h6>No questions</h6>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+    <!-- /Inner main body -->
+  </div>
+  <!-- /Inner main -->
+</div>
+
+

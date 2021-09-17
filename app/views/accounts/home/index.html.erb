@@ -1,0 +1,72 @@
+<% provide(:title, current_account.name.capitalize) %>
+<div class="row mt-5">
+  <div class="col-lg-10 offset-lg-1 mb-2 mt-2">
+    <div class="card">
+      <div class="card-body text-center">
+        <%#= image_tag(current_account.background_image, class: "card-img-top rounded") if current_account.background_image.attached? %>
+         <%= image_tag(current_account.account_logo, class: "img-fluid img-thumbnail rounded-circle border-0 mb-3", style: "width:150px;margin-top:-60px;") if current_account.account_logo.attached? %>
+        <h5 class="card-title"><%= current_account&.owner&.username&.upcase %></h5>
+        <p class="text-muted font-size-sm"> <%= current_account&.tagline %></p>
+      </div>
+      <div class="card-footer text-center">
+        <a href="<%= new_question_path %>" class="btn btn-primary btn-sm has-icon btn-block mt-0 mr-2">
+          <i class="material-icons">question_answer</i>Ask</a>
+        <a href="<%= schedules_path %>" class="btn btn-danger btn-sm has-icon btn-block mt-0">
+          <i class="material-icons">book</i>Book</a>
+        <!-- <a href="<%#= new_forum_path %>" class="btn btn-primary btn-sm has-icon btn-block mt-0 mr-2">
+          <i class="material-icons">add_comment</i>Discuss</a> -->
+      </div>
+      <div class="card-body">
+        <div class="row gutters-sm">
+          <div class="col-sm-12 text-justify">
+            <%=  current_account&.bio %>
+          </div>
+        </div>
+      </div>
+
+      <div class="card-body">
+        <div class="row gutters-sm">
+          <div class="container">
+            <h4 class="mb-3">Book 1-on-1 Lesson</h4>
+          </div>
+          <% if @schedules.any? %>
+            <% @schedules.each do |schedule| %>
+              <% unless schedule.bookings.any? %>
+                <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 mb-3">
+                  <div class="card h-100">
+                    <div class="card-body">
+                      <div class="row gutters-sm">
+                        <!-- <div class="col-sm-4">
+                        <%#= link_to schedule_path(schedule)  do %>
+                          <%#= image_tag "https://www.dropbox.com/s/kgwhqjgvfsfu4t4/teach.jpg?dl=1", class: "card-img-top rounded" %>
+                        <%# end %>
+                          <a href="<%#= schedule_path(schedule) %>" class="btn btn-link has-icon btn-xs bigger-130 text-primary mt-2 float-right"> Learn more <i class="fas fa-angle-double-right ml-1"></i></a>
+                        </div> -->
+                        <div class="col-sm-12">
+                          <h6 class="card-title text-capitalize mt-1 mb-0"><%=schedule.available_date.strftime("%a, %d %b %Y @ %l:%M %p") %></h6>
+                          <!-- <p class="font-size-sm mb-1 card-text"><%#= schedule.summary %></p> -->
+                          <span class="badge badge-primary"><%= humanized_money_with_symbol(schedule.price) %></span>
+                            <span class="badge badge-info"><%= schedule_medium(schedule) %></span>
+                            <!-- <br> -->
+                            <div class="mt-2"></div>
+                          <span class="ml-1 mr-auto font-size-sm text-muted"><i class="far fa-calendar-alt"></i> <%= schedule.available_date.strftime("%a, %D") %></span>
+                          <span class="ml-1 mr-auto font-size-sm text-muted"><i class="far fa-clock"></i> <%= schedule.available_date.strftime("%l:%M %p") %></span>
+                           <a href="<%= new_schedule_booking_path(schedule) %>" class="btn btn-link has-icon btn-xs bigger-130 text-danger mt-2 float-right"> Book Lesson <i class="fas fa-angle-double-right ml-1"></i></a>
+                          <!-- <span class="text-muted"><i class="far fa-comment ml-2 font-size-sm"></i> 3</span> -->
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              <% end %>
+            <% end %>
+          <% else %>
+              <h6>No Schedule available ..</h6>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+

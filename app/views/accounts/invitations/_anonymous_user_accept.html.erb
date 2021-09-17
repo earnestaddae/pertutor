@@ -1,0 +1,16 @@
+<p>
+  <%= link_to "Existing user? Log in here", new_user_session_path, class: "btn btn-primary btn-xs" %>
+</p>
+
+<%= simple_form_for [:accepted, @invitation], as: :user do |f| %>
+  <%= f.error_notification %>
+   <fieldset class="form-fieldset">
+      <legend>Acceptance</legend>
+      <%= f.input :username, placeholder: "Username", readonly: true, wrapper_html: {class: "form-group"}, input_html: { class: "form-control-plaintext", value: @invitation.username } %>
+      <%= f.input :email, placeholder: "Email", readonly: true, wrapper_html: {class: "form-group"}, input_html: { class: "form-control-plaintext", value: @invitation.email } %>
+      <%= f.input :password, placeholder: "Password", wrapper_html: {class: "form-group"}, input_html: { class: "form-control" } %>
+      <%= f.input :password_confirmation, placeholder: "Password Confirmation", wrapper_html: {class: "form-group"}, input_html: { class: "form-control" } %>
+    </fieldset>
+
+    <%= f.button :submit, "Accept Invitation", class: "btn btn-success" %>
+<% end %>

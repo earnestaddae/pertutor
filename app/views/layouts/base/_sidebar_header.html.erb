@@ -1,0 +1,11 @@
+<!-- Sidebar header -->
+<div class="sidebar-header">
+  <a href="/" class="logo">
+    <%= image_tag(gravatar_image_url(current_user.email, secure: false), id: "main-logo", class: "rounded-circle") %>
+     <%= current_user&.username %>
+  </a>
+  <a href="#" class="nav-link nav-icon rounded-circle ml-auto" data-toggle="sidebar">
+    <i class="material-icons">close</i>
+  </a>
+</div>
+<!-- /Sidebar header -->

@@ -1,0 +1,22 @@
+  <div class="card mb-2">
+    <div class="card-body p-2 p-sm-3">
+      <div class="media forum-item">
+        <a href=" <%= forum_path(forum) %>">
+          <%= image_tag(gravatar_image_url(forum.user.email, secure: false), class: "rounded-circle mr-3", width: 50) %>
+        </a>
+          <div class="media-body">
+            <h6><a href=" <%= forum_path(forum) %>" class="text-body"> <%= forum.title %></a></h6>
+            <p class="text-secondary">
+              <%= forum&.summary %>
+            </p>
+            <p class="text-muted">
+              <a href="javascript:void(0)">drewdan</a> replied <span class="text-secondary font-weight-bold">13 minutes ago</span>
+            </p>
+          </div>
+          <div class="text-muted small text-center align-self-center">
+            <span class="d-none d-sm-inline-block"><i class="far fa-eye"></i> 19</span>
+            <span><i class="far fa-comment ml-2"></i> 3</span>
+          </div>
+        </div>
+    </div>
+  </div>

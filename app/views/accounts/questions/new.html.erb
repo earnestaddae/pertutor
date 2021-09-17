@@ -1,0 +1,21 @@
+<!-- Compose Modal -->
+<div class="col-12 p-0 m-0">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header d-flex align-items-center">
+        <h5 class="modal-title mb-0" id="composeModalLabel">New Question</h5>
+      </div>
+      <%= simple_form_for(@question) do |f| %>
+        <%= f.error_notification %>
+        <div class="modal-body">
+          <%= f.input :title, placeholder: "Enter title", wrapper_html: { class: "form-group" }, input_html: { class: "form-control", id: "mailTo", autocomplete: "off" } %>
+          <%= f.input :body, label: "Content", as: :rich_text_area, placeholder: "Enter details", wrapper_html: { class: "form-group" }, input_html: { class: "form-control" } %>
+      </div>
+      <div class="modal-footer">
+        <a href="<%= personal_questions_path %>" type="button" class="btn btn-light" data-dismiss="modal">Back</a>
+        <%= f.button :submit, @question.new_record? ? "Send Question": "Update Question", class: "btn btn-primary" %>
+      </div>
+      <% end %>
+    </div>
+  </div>
+</div>

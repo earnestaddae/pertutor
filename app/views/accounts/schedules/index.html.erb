@@ -1,0 +1,45 @@
+<div class="card-body">
+  <div class="row gutters-sm">
+    <div class="col-sm-12">
+      <div class="card mb-3">
+        <div class="card-body p-2">
+          <h4>Book 1-on-1 Lesson</h4>
+        </div>
+      </div>
+    </div>
+    <% if @schedules.any? %>
+      <% @schedules.each do |schedule| %>
+        <% unless schedule.bookings.any? %>
+          <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 mb-3">
+            <div class="card h-100">
+              <div class="card-body">
+                <div class="row gutters-sm">
+                  <!-- <div class="col-sm-4">
+                  <%#= link_to schedule_path(schedule)  do %>
+                    <%#= image_tag "https://www.dropbox.com/s/kgwhqjgvfsfu4t4/teach.jpg?dl=1", class: "card-img-top rounded" %>
+                  <%# end %>
+                    <a href="<%#= schedule_path(schedule) %>" class="btn btn-link has-icon btn-xs bigger-130 text-primary mt-2 float-right"> Learn more <i class="fas fa-angle-double-right ml-1"></i></a>
+                  </div> -->
+                  <div class="col-sm-12">
+                    <h6 class="card-title text-capitalize mt-1 mb-0"><%=schedule.available_date.strftime("%a, %d %b %Y @ %l:%M %p") %></h6>
+                    <!-- <p class="font-size-sm mb-1 card-text"><%#= schedule.summary %></p> -->
+                    <span class="badge badge-primary"><%= humanized_money_with_symbol(schedule.price) %></span>
+                      <span class="badge badge-info"><%= schedule_medium(schedule) %></span>
+                      <!-- <br> -->
+                      <div class="mt-2"></div>
+                    <span class="ml-1 mr-auto font-size-sm text-muted"><i class="far fa-calendar-alt"></i> <%= schedule.available_date.strftime("%a, %D") %></span>
+                    <span class="ml-1 mr-auto font-size-sm text-muted"><i class="far fa-clock"></i> <%= schedule.available_date.strftime("%l:%M %p") %></span>
+                     <a href="<%= new_schedule_booking_path(schedule) %>" class="btn btn-link has-icon btn-xs bigger-130 text-danger mt-2 float-right"> Book Lesson <i class="fas fa-angle-double-right ml-1"></i></a>
+                    <!-- <span class="text-muted"><i class="far fa-comment ml-2 font-size-sm"></i> 3</span> -->
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+    <% else %>
+        <h6>No Schedule available ..</h6>
+    <% end %>
+  </div>
+</div>

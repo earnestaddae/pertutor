@@ -1,0 +1,42 @@
+<%= simple_form_for [:admin, lecture] do |f| %>
+  <%= f.error_notification %>
+  <div class="row">
+    <div class="col-lg-8">
+      <div class="card">
+        <div class="card-body">
+          <fieldset class="form-fieldset">
+            <legend>Description</legend>
+            <%= f.input :title, placeholder: "Lesson title", wrapper_html: { class: "form-group" }, input_html: { class: "form-control", id: "blogTitle", autocomplete: "off" } %>
+            <%= f.input :summary, placeholder: "Lesson subtitle", wrapper_html: { class: "form-group" }, input_html: { class: "form-control", autocomplete: "off" } %>
+            <%= f.input :description, as: :rich_text_area, placeholder: "Lesson description", wrapper_html: { class: "form-group" }, input_html: { class: "form-control" } %>
+          </fieldset>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-4 mt-3 mt-lg-0">
+      <div class="card">
+        <div class="card-body">
+          <fieldset class="form-fieldset">
+            <legend>Date &amp; Time</legend>
+            <%= f.input :start_date, label: "Start Date", as: :date, start_year: Date.today.year, end_year: Date.today.year + 1, order: [:day, :month, :year], prompt: true, placeholder: "Lesson start date & time", wrapper_html: { class: "form-group" }, input_html: {class: "form-control" } %>
+            <%= f.input :start_date, label: "Start Time", as: :time, ampm: true,  prompt: true, ignore_date: true, placeholder: "Lesson start date & time", wrapper_html: { class: "form-group" }, input_html: {class: "form-control" } %>
+            <%= f.input :end_date, label: "End Date", as: :date, start_year: Date.today.year, end_year: Date.today.year + 1, order: [:day, :month, :year], prompt: true, placeholder: "Lesson end date & time", wrapper_html: { class: "form-group" }, input_html: {class: "form-control" } %>
+            <%= f.input :end_date, label: "End Time", as: :time, ampm: true,  prompt: true, ignore_date: true, placeholder: "Lesson end date & time", wrapper_html: { class: "form-group" }, input_html: {class: "form-control" } %>
+          </fieldset>
+          <fieldset class="form-fieldset">
+            <legend>Pricing</legend>
+            <%= f.input :price, label: "Price", placeholder: "per student", wrapper_html: { class: "form-group" }, input_html: {class: "form-control" } %>
+            <%= f.input :student_limit, label: "# of Students", placeholder: "allowed", wrapper_html: { class: "form-group" }, input_html: {class: "form-control" } %>
+          </fieldset>
+
+          <%= f.button :submit, lecture.new_record? ? "Host Lesson": "Update Lesson", class: "btn has-icon btn-success" %> <br>
+
+          <%= link_to "Back", lectures_path %>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
+
+
+

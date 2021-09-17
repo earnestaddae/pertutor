@@ -1,0 +1,64 @@
+//require actiontext
+
+// google fonts
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,700;0,900;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,700;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&display=swap');
+
+// import and user of bootstrap 4.5.3, font awesome is in app/javascript/stylesheet/application.scss
+@import 'bootstrap/scss/bootstrap';
+@import "simple_calendar";
+@import "mimity/simplebar";
+@import "mimity/sidebar-royal";
+@import "mimity/style";
+@import "customize/buttons";
+@import "customize/footer";
+@import "welcome";
+@import "account/home";
+@import "users";
+@import "lectures";
+@import "./actiontext";
+
+// general styling
+h1, h2, h3,
+h4, h5, h6 {
+  font-family: "Nunito";
+}
+
+
+// styling for the flash messages
+.alert-notice {
+  @extend .alert-success;
+}
+.alert-alert {
+  @extend .alert-danger;
+}
+
+// simple calendar css styles
+.simple-calendar {
+  .day {}
+
+  .wday-0 {}
+  .wday-1 {}
+  .wday-2 {}
+  .wday-3 {}
+  .wday-4 {}
+  .wday-5 {}
+  .wday-6 {}
+
+  .today {}
+  .past {}
+  .future {}
+
+  .start-date {}
+
+  .prev-month {}
+  .next-month { }
+  .current-month {}
+
+  .has-events {
+    color: #fff;
+    background-color: #1A253B;
+  }
+}

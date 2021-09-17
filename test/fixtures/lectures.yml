@@ -1,0 +1,23 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  summary: MyString
+  description: MyText
+  start_date: 2020-11-22 21:19:13
+  end_date: 2020-11-22 21:19:13
+  price: 9.99
+  student_limit: 1
+  user: one
+  account: one
+
+two:
+  title: MyString
+  summary: MyString
+  description: MyText
+  start_date: 2020-11-22 21:19:13
+  end_date: 2020-11-22 21:19:13
+  price: 9.99
+  student_limit: 1
+  user: two
+  account: two

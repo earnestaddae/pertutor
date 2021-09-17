@@ -1,0 +1,72 @@
+<!-- Sidebar body -->
+<div class="sidebar-body" style="background-color:  <%= current_account&.sidebar_body_color %>;">
+  <ul class="nav treeview" data-accordion>
+    <li class="nav-label"><%= current_account&.name&.upcase %></li>
+    <li class="nav-item">
+      <a class="nav-link has-icon <%= active?(root_url(subdomain: current_account.subdomain)) %>" href="<%= root_url(subdomain: current_account.subdomain) %>" ><i class="fas fa-home fa-2x"></i>Home</a>
+    </li>
+    <!-- for other users -->
+    <%# unless current_account&.owner == current_user %>
+    <!--   <li class="nav-item">
+        <a class="nav-link has-icon treeview-toggle" href="#"><i class="fas fa-chalkboard-teacher fa-2x"></i>Lessons</a>
+        <ul class="nav">
+          <li class="nav-item"><a href="<%#= enrolled_path %>" class="nav-link"><i class="far fa-calendar-check"></i>Enrolled</a></li>
+          <li class="nav-item"><a href=" <%#= lectures_path %>" class="nav-link"><i class="far fa-calendar-plus"></i>Upcoming</a></li>
+          <li class="nav-item"><a href="#" class="nav-link"><i class="fas fa-chalkboard"></i>Hosted</a></li>
+        </ul>
+      </li> -->
+
+      <li class="nav-item">
+        <a class="nav-link has-icon <%= active?(schedules_path) %>" href="<%= schedules_path %>" >
+          <i class="fas fa-clipboard-list fa-2x"></i>Book Lesson</a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link has-icon <%= active?(personal_bookings_path) %>" href="<%= personal_bookings_path %>" ><i class="fas fa-calendar-check fa-2x"></i>Bookings</a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link has-icon <%= active?(personal_questions_path) %>" href="<%= personal_questions_path %>" ><i class="fas fa-hands-helping fa-2x"></i></i>Questions</a>
+      </li>
+      <!-- <li class="nav-item">
+        <a class="nav-link has-icon" href="#" ><i class="fas fa-book-open fa-2x"></i>Study Notes</a>
+      </li> -->
+      <!-- <li class="nav-item">
+        <a class="nav-link has-icon" href="#" ><i class="fas fa-book fa-2x"></i>Books</a>
+      </li> -->
+      <!-- <li class="nav-item">
+        <a class="nav-link has-icon" href=" <%#= forums_path %>" ><i class="far fa-comments fa-2x"></i>Discussions</a>
+      </li> -->
+     <!--  <li class="nav-item">
+        <a class="nav-link has-icon" href="<%= users_path %>" ><i class="fas fa-users fa-2x"></i>Members</a>
+      </li> -->
+    <%# end %>
+
+    <%  if current_account.owner == current_user %>
+    <li class="nav-label">ADMINISTRATOR</li>
+    <li class="nav-item">
+      <a class="nav-link has-icon <%= active?(admin_root_path) %>" href="<%= admin_root_path %>" ><i class="fas fa-tachometer-alt fa-2x"></i>Dashboard</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link has-icon <%= active?(admin_users_path) %>" href="<%= admin_users_path %>" ><i class="fas fa-users fa-2x"></i>Users</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link has-icon <%= active?(settings_root_path) %>" href=" <%= settings_root_path %>" ><i class="fas fa-cogs fa-2x"></i>Settings</a>
+    </li>
+
+    <li class="nav-item">
+      <a class="nav-link has-icon <%= active?(admin_schedules_path) %>" href=" <%= admin_schedules_path %>" ><i class="fas fa-calendar-week fa-2x"></i>Calendar</a>
+    </li>
+    <% end %>
+
+   <!--  <li class="nav-item">
+      <a class="nav-link has-icon treeview-toggle" href="#"><i class="fas fa-book"></i>Bookings</a>
+      <ul class="nav">
+        <li class="nav-item"><a href="#" class="nav-link">Submenu item</a></li>
+        <li class="nav-item"><a href="#" class="nav-link">Submenu item</a></li>
+        <li class="nav-item"><a href="#" class="nav-link">Submenu item</a></li>
+      </ul>
+    </li> -->
+  </ul>
+</div>
+  <!-- /Sidebar body -->

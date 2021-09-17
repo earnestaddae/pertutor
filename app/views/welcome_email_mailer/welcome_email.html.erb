@@ -1,0 +1,39 @@
+<div class="container mt-4">
+  <!-- <h2 class="text-center mb-4">
+    PerTutor
+  </h2> -->
+
+  <div class="card mb-4 mt-4 bg-dark text-white">
+    <div class="card-body">
+      <h3 class="text-center mb-4">Welcome  <%= @user.username.capitalize %>! 🙌 </h3>
+
+      <p class="mb-4 text-justify">
+        Thank you for signing up to PerTutor and we're glad to have you with us! PerTutor was created to help people like yourself have an easy way to teach &amp; learn while earning an extra income as a tutor.
+      </p>
+
+      <p class="mb-4 text-justify">
+        When it comes to teaching, we believe that learners or students must have a say in what they learn. On PerTutor, we enable you to do so by letting you schedule your available time &amp; have students book a lesson.
+      </p>
+
+      <p class="mb-4">
+        The best way to get started is to.
+      </p>
+
+      <%= link_to "Schedule Your Calendar", new_admin_schedule_url(subdomain: @account.subdomain), {class: "btn btn-primary mx-auto mt-2", style: "width: 95%" } %>
+
+      <%= link_to "Invite Your Students", new_admin_invitation_url(subdomain: @account.subdomain), {class: "btn btn-info mx-auto mt-2", style: "width: 95%" } %>
+
+      <%= link_to "Students Can Join", new_user_url(subdomain: @account.subdomain, join_me: @account.name), {class: "btn btn-success mx-auto mt-2", style: "width: 95%" } %>
+
+        <p class="mt-4">
+          Don't hesitate to contact us on <strong>+233 55 293 3319</strong> or <strong>+233 24 055 0892</strong> if you have further questions.
+        </p>
+
+        <p class="lead mt-4">
+          Sincerely, Ernest <br>
+          <small>Co-Founder, PerTutor</small>
+        </p>
+
+    </div>
+  </div>
+</div>

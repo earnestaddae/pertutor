@@ -1,0 +1,36 @@
+<div class="container">
+  <div class="row">
+    <div class="col-lg-8 offset-lg-2 col-sm-12 col-md-6 justify-content-center align-items-start mb-5 p-1">
+      <div class="card mb-3">
+        <div class="card-body p-4">
+          <h4><span class="text-capitalize"><%= @schedule&.available_date.strftime("%a, %d %b %Y @ %l:%M %p") %></span></h4>
+          <p class="font-weight-light text-secondary"> Completing payment of  <%= humanized_money_with_symbol(@schedule&.price) %> to book 1-on-1 <strong class="text-danger"> <u><%= schedule_medium(@schedule) %></u> </strong> lesson on <br>
+            <span class="text-primary"><%= time_format(@schedule.available_date)  %></span>
+          </p>
+            <%= render 'form', schedule: @schedule, booking: @booking %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+<!-- <div class="col-12 m-0 p-0">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header d-flex align-items-center">
+        <h5 class="modal-title mb-0" id="composeModalLabel">Booking a Tutor  👉  <small> Budget constraint? <%#= link_to "Ask Instructor", new_question_path, class: "card-link"  %></small></h5>
+      </div>
+       <%#= render 'form', schedule: @schedule, booking: @booking %>
+    </div>
+  </div>
+</div> -->

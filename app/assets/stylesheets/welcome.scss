@@ -1,0 +1,70 @@
+// Place all the styles related to the welcome controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+.anonymous-user,
+.signed-user {
+  background-color: #223C5E;
+}
+
+// .signed-user {
+//   // background-color: #FDFEFE;
+// }
+
+// // general styling
+// h1, h2, h3,
+// h4, h5, h6 {
+//   font-family: Nunito !important;
+// }
+
+.main-background,
+.jumbotron,
+.general-padding,
+.tutor-call,
+.details,
+.benefits,
+.earnings,
+.about,
+.join,
+.getting-page {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+
+.main-background,
+.jumbotron,
+.details,
+.getting-page {
+  color: #FDFEFE;
+}
+
+.main-background,
+.jumbotron {
+  background-color: #1A253B;
+}
+
+.tutor-call,
+.benefits,
+.join {
+  background-color: #eee;
+}
+
+.details {
+  background-color: #223C5E;
+
+  .jumbotron {
+    background-color: inherit;
+  }
+}
+
+.earnings,
+.about {
+  background-color: #FDFEFE;
+}
+
+.about {
+  .jumbotron {
+    background-color: inherit;
+    color: inherit;
+  }
+}

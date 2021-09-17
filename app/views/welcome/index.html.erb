@@ -1,0 +1,7 @@
+<% if user_signed_in? %>
+  <div class="container">
+   <%= render "welcome/signed_user" %>
+  </div>
+<% else %>
+  <%= render "welcome/anonymous_user" %>
+<% end %>

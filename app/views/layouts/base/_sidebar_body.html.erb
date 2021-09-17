@@ -1,0 +1,23 @@
+<!-- Sidebar body -->
+<div class="sidebar-body">
+  <ul class="nav treeview" data-accordion>
+    <li class="nav-label">DASHBOARD</li>
+    <li class="nav-item">
+      <a class="nav-link has-icon" href="<%= root_url(subdomain: nil) %>" ><i class="fas fa-school fa-2x"></i>My Channels</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link has-icon" href="<%= edit_user_registration_path %>" ><i class="fas fa-user-cog fa-2x"></i></i>Settings</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link has-icon" href="<%= new_account_path %>" ><i class="fas fa-plus-square fa-2x"></i>Create New Channel</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link has-icon" href="<%= destroy_user_session_path %>" data-method="delete" ><i class="fas fa-sign-out-alt fa-2x"></i>Logout</a>
+    </li>
+
+    <li class="nav-item">
+      <a class="nav-link has-icon" href="#" ><i class="fas fa-university fa-2x"></i>PerTutorU</a>
+    </li>
+  </ul>
+</div>
+<!-- /Sidebar body -->

@@ -1,0 +1,113 @@
+<!-- Breadcrumb -->
+<nav aria-label="breadcrumb card-body">
+  <ol class="breadcrumb border breadcrumb-style1">
+    <li class="breadcrumb-item"><a href="<%= admin_root_url %>">Home</a></li>
+    <li class="breadcrumb-item"><a href="<%= admin_root_path %>"><%= current_account&.name&.capitalize %></a></li>
+    <li class="breadcrumb-item active" aria-current="page">Users</li>
+  </ol>
+</nav>
+<!-- /Breadcrumb -->
+
+<div class="d-flex">
+  <div class="list-with-gap">
+    <a href="<%= new_admin_invitation_path %>" class="btn btn-primary btn-sm has-icon" type="button"><i class="material-icons mr-2">person_add</i>Add Member</a>
+    <a href="<%= new_user_path(subdomain: current_account.subdomain, join_me: current_account.name ) %>" class="btn btn-light btn-sm has-icon d-sm-block" type="button"><i class="far fa-share-square mr-2"></i> Share Invitation</a>
+    <!-- <a href="<%= new_admin_user_path %>" class="btn btn-primary has-icon" type="button"><i class="material-icons mr-2">person_add</i>Invite New User</a> -->
+    <!-- <a href="<%#= new_user_path(subdomain: current_account.subdomain, tk: generate_tk ) %>" class="btn btn-light btn-sm d-none d-sm-block"><i class="far fa-share-square"></i> Share Invitation</a> -->
+    <%#= social_share_button_tag(current_account&.name, :url => new_user_path(subdomain: current_account.subdomain)) %>
+    <!-- <a class="btn btn-light btn-sm d-none d-sm-block">Export user (Excel)</a> -->
+  </div>
+  <a class="btn btn-primary ml-auto align-self-end has-icon" type="button" onclick="document.querySelector('#filter').toggleAttribute('hidden')">
+    <i class="material-icons mr-2">filter_list</i>Filter
+  </a>
+</div>
+<br>
+<div class="column-filter" id="filter" hidden >
+  <div class="card p-2">
+    <div class="container">
+      <%= search_form_for @q, url: admin_users_path, html: { class: "form-inline" } do |f| %>
+      <div class="form-group mx-sm-3 mb-2">
+         <%= f.label :username_or_email_cont, class: "sr-only" %>
+        <%= f.search_field :username_or_email_cont, class: "form-control", placeholder: "find username or email" %>
+      </div>
+        <%= f.submit class: "btn btn-outline-info mb-2 ml-2" %>
+        <%= link_to admin_users_path, class: "ml-2 btn btn-default mb-2" do %>
+          <i class="fas fa-sync"></i>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<div class="card mt-3">
+  <% if @users.any? %>
+    <div class="table-responsive">
+      <table class="table table-nostretch table-align-middle mb-0">
+        <thead>
+          <tr>
+            <th scope="col" class="text-center">Avatar</th>
+            <th scope="col" class="text-center"><%= sort_link(@q, :username) %></th>
+            <th scope="col" class="text-center"><%= sort_link(@q, :joined) %></th>
+            <th scope="col" class="text-center"><%= sort_link(@q, :email) %></th>
+            <th scope="col" class="text-center"><%#= sort_link(@q, :role) %>Role</th>
+            <th scope="col" class="text-center">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+              <td class="text-center">
+                <%= image_tag(gravatar_image_url(current_account.owner.email, secure: false), class: "rounded-circle", width: 40) %>
+              </td>
+              <td class="text-center"><%= current_account.owner.username.capitalize %></td>
+              <td class="text-center"><%= current_account.owner.created_at.strftime("%D") %></td>
+              <td class="text-center"><%= current_account.owner.email %></td>
+              <td class="text-center">
+                <span class="badge badge-pill badge-danger"> Account Owner</span>
+              </td>
+              <td class="text-center">
+                <div class="btn-group btn-group-sm" role="group">
+                  <!-- <a href="javascript:void(0)" class="btn btn-link btn-icon bigger-130 text-primary" title="Detail"><i class="material-icons">visibility</i></a> -->
+                  <!-- <a href=" <%#= edit_admin_user_path(current_account.owner) %>" class="btn btn-link btn-icon bigger-130 text-success" title="Edit"><i class="material-icons">edit</i></a> -->
+                  <%#= link_to admin_user_path(user), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-link btn-icon bigger-130 text-danger" do %>
+                    <!-- <i class="material-icons">delete_outline</i> -->
+                  <%# end %>
+                  <!-- <a href="javascript:void(0)" class="btn btn-link btn-icon bigger-130 text-danger" title="Delete"><i class="material-icons">delete_outline</i> -->
+                  <!-- </a> -->
+                </div>
+              </td>
+            </tr>
+          <% @users.each do |user| %>
+            <tr>
+              <td class="text-center">
+                <%= image_tag(gravatar_image_url(user.email, secure: false), class: "rounded-circle", width: 40) %>
+              </td>
+              <td class="text-center"><%= user.username.capitalize %></td>
+              <td class="text-center"><%= user.created_at.strftime("%D") %></td>
+              <td class="text-center"><%= user.email %></td>
+              <td class="text-center">
+                <% user.roles.each do |role| %>
+                  <span class="badge badge-pill badge-primary"> <%= role.name.capitalize %></span>
+                <% end %>
+              </td>
+              <td class="text-center">
+                <div class="btn-group btn-group-sm" role="group">
+                  <% owners_only do %>
+                    <!-- <a href="javascript:void(0)" class="btn btn-link btn-icon bigger-130 text-primary" title="Detail"><i class="material-icons">visibility</i></a> -->
+                    <a href=" <%= edit_admin_user_path(user) %>" class="btn btn-link btn-icon bigger-130 text-success" title="Edit"><i class="material-icons">edit</i></a>
+                    <%= link_to admin_user_path(user), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-link btn-icon bigger-130 text-danger" do %>
+                      <i class="material-icons">delete_outline</i>
+                    <% end %>
+                    <!-- <a href="javascript:void(0)" class="btn btn-link btn-icon bigger-130 text-danger" title="Delete"><i class="material-icons">delete_outline</i> -->
+                    <!-- </a> -->
+                  <% end %>
+                </div>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  <% else %>
+    <h6 class="p-2">Sorry, you have no users on your account</h6>
+  <% end %>
+</div>

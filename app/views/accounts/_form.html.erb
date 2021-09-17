@@ -1,0 +1,21 @@
+<%= simple_form_for(account) do |f| %>
+  <%= f.error_notification %>
+
+  <fieldset class="form-fieldset">
+    <legend>Create Channel</legend>
+
+    <%= f.input :name, placeholder: "Channel name", wrapper_html: {class: "form-group"}, input_html: { class: "form-control" } %>
+    <%= f.input :subdomain, placeholder: "Channel subdomain", hint: "This will enable us create https://yoursubdomain.pertutor.com. Keep it simple 😀", hint_html: { class: "font-weight-bold" }, wrapper_html: {class: "form-group"}, input_html: { class: "form-control" } %>
+  </fieldset>
+  <fieldset class="form-fieldset">
+    <legend>User Info</legend>
+    <%= f.fields_for :owner do |owner| %>
+      <%#= owner.input :username, placeholder: "Username", wrapper_html: { class: "form-group" }, input_html: { class: "form-control" } %>
+      <%= owner.input :email, placeholder: "Email address", wrapper_html: { class: "form-group" }, input_html: { class: "form-control" } %>
+      <%= owner.input :password, placeholder: "Password", wrapper_html: { class: "form-group" }, input_html: { class: "form-control" } %>
+      <%= owner.input :password_confirmation, placeholder: "Confirm Password", wrapper_html: { class: "form-group" }, input_html: { class: "form-control" } %>
+    <% end %>
+  </fieldset>
+
+  <%= f.button :submit, @account.new_record? ? "Create Channel": "Update Channel", class: "btn btn-success" %>
+<% end %>

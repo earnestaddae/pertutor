@@ -1,0 +1,30 @@
+<%= simple_form_for [:admin, schedule] do |f| %>
+  <div class="row">
+    <div class="col-lg-8 offset-lg-2">
+      <div class="card">
+        <div class="card-body">
+          <%= f.error_notification %>
+          <fieldset class="form-fieldset">
+            <legend>Date &amp; Time to Teach</legend>
+            <%= f.input :available_date, label: "Schedule Date", as: :date, start_year: Date.today.year, end_year: Date.today.year + 1, order: [:day, :month, :year], prompt: true, placeholder: "Schedule to teach", wrapper_html: { class: "form-group" }, input_html: {class: "form-control" } %>
+            <%= f.input :available_date, label: "Schedule Time", as: :time, ampm: true,  prompt: true, ignore_date: true, placeholder: "Schedule time to teach", wrapper_html: { class: "form-group" }, input_html: {class: "form-control" } %>
+           <%= f.input :medium, label: "Type", collection: Schedule.media.keys, as: :collection_select,  prompt: true, wrapper_html: { class: "form-group" }, input_html: {class: "form-control" } %>
+          </fieldset>
+
+          <fieldset class="form-fieldset">
+            <legend>Pricing</legend>
+            <%= f.input :price, label: "Price", placeholder: "per student", wrapper_html: { class: "form-group" }, input_html: {class: "form-control" } %>
+            <%#= f.input :students_allowed, label: "# of Students per session", placeholder: "allowed", wrapper_html: { class: "form-group" }, input_html: {class: "form-control" } %>
+          </fieldset>
+
+          <%= f.button :submit, schedule.new_record? ? "Create Schedule": "Update Schedule", class: "btn has-icon btn-success" %> <br>
+
+          <%= link_to "Back", schedules_path %>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
+
+
+

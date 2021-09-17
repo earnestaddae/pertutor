@@ -1,0 +1,32 @@
+<!-- Breadcrumb -->
+<nav aria-label="breadcrumb card-body">
+  <ol class="breadcrumb border breadcrumb-style1">
+    <li class="breadcrumb-item"><a href="<%= admin_root_url %>">Home</a></li>
+    <li class="breadcrumb-item"><a href="<%= admin_users_path %>">Users</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Invite User</li>
+  </ol>
+</nav>
+<!-- /Breadcrumb -->
+
+<div class="container">
+  <div class="row">
+    <div class="col-lg-8 offset-lg-2 col-sm-12 col-md-6 justify-content-center align-items-start mb-5">
+      <div class="card mb-3">
+        <div class="card-body p-4">
+          <h2>User Invitation</h2>
+          <p class="font-weight-light text-secondary">Only invited & accepted users can access your channel</p>
+          <%= simple_form_for([:admin, @user]) do |f| %>
+            <%= f.error_notification %>
+            <fieldset class="form-fieldset">
+              <legend>Invitation</legend>
+              <%= f.input :username, placeholder: "Username", wrapper_html: {class: "form-group"}, input_html: { class: "form-control"} %>
+              <%= f.input :email, placeholder: "Email", wrapper_html: {class: "form-group"}, input_html: { class: "form-control" } %>
+            </fieldset>
+
+            <%= f.submit "Invite User", class: "btn btn-primary" %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

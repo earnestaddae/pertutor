@@ -1,0 +1,75 @@
+<!-- Main header -->
+<div class="main-header">
+  <a class="nav-link nav-link-faded rounded-circle nav-icon" href="#" data-toggle="sidebar"><i class="material-icons">menu</i></a>
+  <form class="form-inline ml-3 d-none d-md-flex">
+    <span class="input-icon">
+      <i class="material-icons">search</i>
+      <input type="text" placeholder="Search..." class="form-control bg-gray-200 border-gray-200 rounded-lg">
+    </span>
+  </form>
+  <ul class="nav nav-circle ml-auto">
+    <li class="nav-item d-md-none"><a class="nav-link nav-link-faded nav-icon" data-toggle="modal" href="#searchModal"><i class="material-icons">search</i></a></li>
+    <li class="nav-item d-none d-sm-block"><a class="nav-link nav-link-faded nav-icon" href="" id="refreshPage"><i class="material-icons">refresh</i></a></li>
+    <!-- <li class="nav-item dropdown nav-notif">
+      <a class="nav-link nav-link-faded nav-icon has-badge dropdown-toggle no-caret" href="#" data-toggle="dropdown" data-display="static">
+        <i class="fas fa-home"></i>
+        <span class="badge badge-pill badge-danger">2</span>
+      </a>
+      <div class="dropdown-menu dropdown-menu-right p-0">
+        <div class="card">
+          <div class="card-header bg-primary text-white">
+            <i class="fas fa-home mr-2"></i>2 notifications
+          </div>
+          <div class="card-body p-0 pt-1">
+            <div class="list-group list-group-sm list-group-flush">
+              <a href="javascript:void(0)" class="list-group-item list-group-item-action">
+                <div class="media">
+                  <span class="bg-primary text-white btn-icon rounded-circle"><i class="fas fa-home"></i></span>
+                  <div class="media-body ml-2">
+                    <p class="mb-0">5 New members joined today</p>
+                    <small class="text-secondary">
+                      <i class="material-icons icon-inline mr-1">access_time</i>5 minutes ago
+                    </small>
+                  </div>
+                </div>
+              </a>
+              <a href="javascript:void(0)" class="list-group-item list-group-item-action">
+                <div class="media">
+                  <span class="bg-info text-white btn-icon rounded-circle"><i class="fas fa-home"></i></span>
+                  <div class="media-body ml-2">
+                    <p class="mb-0">2 New comments</p>
+                    <small class="text-secondary">
+                      <i class="material-icons icon-inline mr-1">access_time</i>10 minutes ago
+                    </small>
+                  </div>
+                </div>
+              </a>
+            </div>
+          </div>
+          <div class="card-footer justify-content-center">
+            <a href="javascript:void(0)">View more &rsaquo;</a>
+          </div>
+        </div>
+      </div>
+    </li> -->
+    <li class="nav-item dropdown ml-2">
+      <a class="nav-link nav-link-faded rounded nav-link-img dropdown-toggle px-2" href="#" data-toggle="dropdown" data-display="static">
+        <%= image_tag(gravatar_image_url(current_user.email, secure: false), class: "rounded-circle mr-2") %>
+        <span class="d-none d-sm-block"> <%= current_user&.username&.capitalize %></span>
+      </a>
+      <div class="dropdown-menu dropdown-menu-right pt-0 overflow-hidden">
+        <div class="media align-items-center bg-primary text-white px-4 py-3 mb-2">
+          <%= image_tag(gravatar_image_url(current_user.email, secure: false), class: "rounded-circle mr-2", width: 50, height: 50) %>
+          <div class="media-body ml-2 text-nowrap">
+            <h6 class="mb-0">User</h6>
+            <span class="text-gray-400 font-size-sm">User Group</span>
+          </div>
+        </div>
+        <a class="dropdown-item has-icon" href="<%= edit_user_registration_path %>"><i class="fas fa-user-cog mr-2"></i>Settings</a>
+        <a class="dropdown-item has-icon" href="<%= new_account_path %>"><i class="fas fa-plus-square mr-2"></i>Add Channel</a>
+        <a class="dropdown-item has-icon text-danger" href="<%= destroy_user_session_path %>" data-method="delete"><i class="fas fa-sign-out-alt mr-2"></i>Sign out</a>
+      </div>
+    </li>
+  </ul>
+</div>
+<!-- /Main header -->

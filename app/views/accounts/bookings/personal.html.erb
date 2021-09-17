@@ -1,0 +1,118 @@
+<div class="card">
+  <div class="card-body">
+    <h4 class="card-title">My Bookings</h4>
+  </div>
+</div>
+<div class="mt-2"></div>
+
+<div class="card">
+  <div class="card-body">
+    <!-- Toolbar -->
+    <div class="btn-group btn-group-sm mb-3" role="group">
+      <a href="<%= schedules_path %>" type="button" class="btn btn-light has-icon"><i class="material-icons mr-1">add_circle_outline</i> Book</a>
+      <!-- <button type="button" class="btn btn-light has-icon"><i class="material-icons mr-1">refresh</i> Refresh</button> -->
+      <!-- <button type="button" class="btn btn-light has-icon"><i class="mr-1" data-feather="paperclip"></i> Export</button> -->
+    </div>
+
+    <div class="table-responsive">
+      <table class="table table-bordered table-sm has-checkAll mb-0" data-bulk-target="#bulk-dropdown" data-checked-class="table-warning">
+        <!-- <caption class="p-0 text-right"><small>Booking entries</small></caption> -->
+
+        <!-- Filter columns -->
+        <thead class="thead-primary">
+          <!-- <tr class="column-filter">
+            <th colspan="2"></th>
+            <th>
+              <label class="input-clearable input-icon input-icon-sm input-icon-right">
+                <input type="text" class="form-control form-control-sm border-primary" placeholder="Search First name"><i data-toggle="clear" class="material-icons">clear</i>
+              </label>
+            </th>
+            <th>
+              <label class="input-clearable input-icon input-icon-sm input-icon-right">
+                <input type="text" class="form-control form-control-sm border-primary" placeholder="Search Last name"><i data-toggle="clear" class="material-icons">clear</i>
+              </label>
+            </th>
+            <th>
+              <label class="input-clearable input-icon input-icon-sm input-icon-right">
+                <input type="text" class="form-control form-control-sm border-primary" placeholder="Search Position"><i data-toggle="clear" class="material-icons">clear</i>
+              </label>
+            </th>
+            <th>
+              <label class="input-clearable input-icon input-icon-sm input-icon-right">
+                <input type="text" class="form-control form-control-sm border-primary" placeholder="Search Office"><i data-toggle="clear" class="material-icons">clear</i>
+              </label>
+            </th>
+            <th><button class="btn btn-sm btn-outline-primary btn-block has-icon"><i class="material-icons">search</i></button></th>
+          </tr> -->
+          <tr>
+            <!-- <th scope="col">
+              <div class="custom-control custom-control-nolabel custom-checkbox">
+                <input type="checkbox" class="custom-control-input" id="checkAll">
+                <label class="custom-control-label" for="checkAll"></label>
+              </div>
+            </th> -->
+            <th scope="col" class="text-center">Detail</th>
+            <th scope="col" class="text-center"><a href="javascript:void(0)" class="sorting asc">Username</a></th>
+            <th scope="col" class="text-center"><a href="javascript:void(0)" class="sorting">Booking Status</a></th>
+            <!-- <th scope="col"><a href="javascript:void(0)" class="sorting">Position</a></th> -->
+            <!-- <th scope="col"><a href="javascript:void(0)" class="sorting">Office</a></th> -->
+            <th scope="col" class="text-center">Actions</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% if @my_bookings.any? %>
+            <% @my_bookings.each do |booking| %>
+              <%= render booking %>
+             <% end %>
+          <% else %>
+            No Bookings
+          <% end %>
+        </tbody>
+      </table><!-- /.table -->
+
+    </div><!-- /.table-responsive -->
+
+    <div class="d-flex align-items-center flex-column flex-sm-row">
+
+      <!-- Bulk action dropdown -->
+      <div class="dropdown dropup bulk-dropdown align-self-start mr-2 mt-1 mt-sm-0" id="bulk-dropdown" hidden>
+        <button class="btn btn-light btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <span class="checked-counter"></span>
+        </button>
+        <div class="dropdown-menu">
+          <button class="dropdown-item has-icon" type="button"><i class="fas fa-copy mr-2"></i> Copy</button>
+          <button class="dropdown-item has-icon" type="button"><i class="mr-2" data-feather="archive"></i> Archive</button>
+          <div class="dropdown-divider"></div>
+          <button class="dropdown-item has-icon text-danger" type="button"><i class="mr-2" data-feather="trash"></i> Remove</button>
+        </div>
+      </div>
+
+      <!-- Show entries -->
+      <!-- <form class="form-inline mt-1 mt-sm-0">
+        Show
+        <select class="custom-select custom-select-sm w-auto mx-1">
+          <option value="5">5</option>
+          <option value="10">10</option>
+          <option value="20">20</option>
+          <option value="50">50</option>
+        </select>
+        entries
+      </form> -->
+
+      <!-- Pagination -->
+     <!--  <ul class="pagination pagination-sm pagination-circle mb-0 ml-sm-auto mt-1 mt-sm-0">
+        <li class="page-item disabled">
+          <span class="page-link"><i data-feather="chevron-left"></i></span>
+        </li>
+        <li class="page-item active"><span class="page-link">1</span></li>
+        <li class="page-item"><a class="page-link" href="javascript:void(0)">2</a></li>
+        <li class="page-item"><a class="page-link" href="javascript:void(0)">3</a></li>
+        <li class="page-item readonly"><span class="page-link">...</span></li>
+        <li class="page-item"><a class="page-link" href="javascript:void(0)">10</a></li>
+        <li class="page-item"><a class="page-link" href="javascript:void(0)"><i data-feather="chevron-right"></i></a></li>
+      </ul> -->
+
+    </div><!-- /.d-flex -->
+  </div>
+</div>

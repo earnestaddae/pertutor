@@ -1,0 +1,61 @@
+.sidebar {
+  background: linear-gradient(to bottom, #141e30, #243b55);
+  border-right-color: transparent !important;
+}
+
+.sidebar .nav-link,
+.sidebar .nav-link:focus:not(:hover):not(.active) {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.sidebar .logo,
+.sidebar .nav-link:hover,
+.sidebar .nav-link.active {
+  color: #fff;
+}
+
+.sidebar .nav-link:hover,
+.sidebar .nav-link.active {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.sidebar .nav-link.active {
+  box-shadow: 3px 0 0 0 #fff inset;
+}
+
+.sidebar .nav-label {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.sidebar .treeview ul .nav-link:hover,
+.sidebar .treeview ul .nav-link.active {
+  background-color: transparent;
+  box-shadow: none;
+}
+
+.main-navbar {
+  background: linear-gradient(to bottom, #141e30, #243b55);
+}
+
+.main-navbar [data-scroll],
+.main-navbar .navbar-nav .show > .nav-link,
+.main-navbar .navbar-nav .nav-link,
+.main-navbar .navbar-nav .nav-link:focus:not(:hover):not(.active) {
+  color: rgba(255, 255, 255, 0.5);
+  background-color: transparent;
+}
+
+.main-navbar [data-scroll]:hover,
+.main-navbar [data-scroll]:focus,
+.main-navbar .navbar-nav .nav-link:hover,
+.main-navbar .navbar-nav .nav-link.active {
+  color: #fff;
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+@media (min-width: 992px) {
+  .sticky-navbar .main-header {
+    box-shadow: none;
+  }
+}
+/*# sourceMappingURL=sidebar-royal.css.map */

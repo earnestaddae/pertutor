@@ -1,0 +1,41 @@
+@import "variables";
+
+$button_color: $gray-100; ;
+
+.bg-pertutor {
+  background-color: $btn_pertutor !important;
+}
+
+.btn-pertutor {
+  background-color: $btn_pertutor;
+  border-color: $btn_pertutor;
+  color: $button_color;
+  &:active,
+  &:focus,
+  &:hover {
+    background-color: darken($btn_pertutor, 10%) !important;
+    border-color: darken($btn_pertutor, 10%) !important;
+    color: $button_color;
+  }
+  &:focus {
+    box-shadow: 0 0 0 0.2rem fade-out($btn_pertutor, 0.5);
+    color: $button_color;
+  }
+}
+
+.btn-original {
+  background-color: $btn_original;
+  border-color: $btn_original;
+  color: $button_color;
+  &:active,
+  &:focus,
+  &:hover {
+    background-color: darken($btn_original, 10%) !important;
+    border-color: darken($btn_original, 10%) !important;
+    color: $button_color;
+  }
+  &:focus {
+    box-shadow: 0 0 0 0.2rem fade-out($btn_original, 0.5);
+    color: $button_color;
+  }
+}

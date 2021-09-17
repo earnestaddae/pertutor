@@ -1,0 +1,70 @@
+<!-- <div class="row gutters-sm"> -->
+  <h6>ACCOUNT SETTINGS</h6>
+  <hr>
+  <%= simple_form_for([:settings, @account], html: { multipart: true },  url: settings_account_path(@account), method: :patch) do |f| %>
+    <%= f.error_notification %>
+
+    <fieldset class="form-fieldset">
+      <legend> <h5>Account Info</h5></legend>
+      <%= f.input :name, placeholder: "Account name", wrapper_html: {class: "form-group"}, input_html: { class: "form-control" } %>
+      <%= f.input :subdomain, placeholder: "Account subdomain", hint_html: { class: "font-weight-bold" }, wrapper_html: {class: "form-group"}, input_html: { class: "form-control" } %>
+      <%= f.input :tagline, placeholder: "Tagline", wrapper_html: {class: "form-group"}, input_html: { class: "form-control" } %>
+      <%= f.input :bio, label: "Description", as: :rich_text_area, placeholder: "Account description", wrapper_html: {class: "form-group"}, input_html: { class: "form-control" } %>
+      <%= f.button :submit, "Save Changes", class: "btn btn-success btn-sm float-right" %>
+    </fieldset>
+
+
+    <fieldset class="form-fieldset">
+      <legend><h5>Account Address</h5></legend>
+       <%= f.input :address, placeholder: "Address", wrapper_html: {class: "form-group"}, input_html: { class: "form-control" } %>
+       <%= f.input :phone_number, placeholder: "Phone Number", wrapper_html: {class: "form-group"}, input_html: { class: "form-control" } %>
+       <%= f.input :city, placeholder: "City", wrapper_html: {class: "form-group"}, input_html: { class: "form-control" } %>
+       <%= f.input :country, prompt: true, wrapper_html: {class: "form-group"}, input_html: { class: "custom-select" } %>
+      <%= f.button :submit, "Save Changes", class: "btn btn-success btn-sm float-right" %>
+    </fieldset>
+
+    <fieldset class="form-fieldset">
+      <legend> <h5>Customize Account</h5></legend>
+        <div class="row gutters-sm">
+          <div class="col-sm-6">
+            <div class="list-with-gap">
+              <% if @account.account_logo.attached? %>
+                <%= image_tag(@account.account_logo, width: 100, class: "img-fluid") %>
+              <% end %>
+              <%= f.input :account_logo, label: "#{@account.account_logo.attached? ? @account.account_logo.filename : "Choose account logo"}", label_html: { class: "custom-file-label"}, as: :file, wrapper_html: {class: "custom-file", id: "customFile"}, input_html: { class: "custom-file-input", id: "customFile" } %>
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="list-with-gap">
+              <% if @account.background_image.attached? %>
+                <%= image_tag(@account.background_image, width: 100, class: "img-fluid mt-4") %>
+              <% end %>
+              <%= f.input :background_image, label: "#{@account.background_image.attached? ? @account.background_image.filename : "Choose background image"}", label_html: { class: "custom-file-label"}, as: :file, wrapper_html: {class: "custom-file"}, input_html: { class: "custom-file-input", id: "customFile" } %>
+            </div>
+          </div>
+        </div>
+        <div class="row gutters-sm mt-2">
+          <div class="col-sm-3">
+            <%= f.input :home_color, label: "Homepage color", as: :color, wrapper_html: {class: "form-group"}, input_html: { class: "form-control" } %>
+          </div>
+          <div class="col-sm-3">
+            <%= f.input :footer_color, label: "Footer color", as: :color, wrapper_html: {class: "form-group"}, input_html: { class: "form-control" } %>
+          </div>
+          <div class="col-sm-3">
+            <%= f.input :sidebar_header_color, label: "Sidebar header color", as: :color, wrapper_html: {class: "form-group"}, input_html: { class: "form-control" } %>
+          </div>
+          <div class="col-sm-3">
+            <%= f.input :sidebar_body_color, label: "Sidebar body color", as: :color, wrapper_html: {class: "form-group"}, input_html: { class: "form-control" } %>
+          </div>
+        </div>
+
+        <%= f.button :submit, "Save Changes", class: "btn btn-success btn-sm float-right" %>
+    </fieldset>
+  <% end %>
+  <hr>
+  <div class="form-group">
+    <label class="d-block text-danger">Delete Account</label>
+    <p class="text-muted font-size-sm">Once you delete your account, there is no going back. Please be certain.</p>
+  </div>
+  <a href="#" class="btn btn-danger btn-xs" type="button">Delete Account</a>
+<!-- </div> -->

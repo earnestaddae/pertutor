@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  lecture: one
+  tutor_id: 1
+  student_id: 1
+  pay_type: 1
+  pay_provider: 1
+
+two:
+  lecture: two
+  tutor_id: 1
+  student_id: 1
+  pay_type: 1
+  pay_provider: 1

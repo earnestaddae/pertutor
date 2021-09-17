@@ -1,0 +1,158 @@
+<!-- Breadcrumb -->
+<nav aria-label="breadcrumb card-body">
+  <ol class="breadcrumb border breadcrumb-style1">
+    <li class="breadcrumb-item active"><a href="<%= settings_root_path %>">Account Settings</a></li>
+  </ol>
+</nav>
+<!-- /Breadcrumb -->
+
+<div class="row gutters-sm">
+   <%= render "shared/settings" %>
+  <div class="col-md-8">
+    <div class="card">
+      <%= render "shared/settings_mobile" %>
+      <div class="card-body tab-content">
+        <div class="tab-pane" id="profile">
+          <h6>YOUR PROFILE INFORMATION</h6>
+          <hr>
+          <form>
+            <div class="form-group">
+              <label for="fullName">Full Name</label>
+              <input type="text" class="form-control" id="fullName" aria-describedby="fullNameHelp" placeholder="Enter your fullname" value="Kenneth Valdez">
+              <small id="fullNameHelp" class="form-text text-muted">Your name may appear around here where you are mentioned. You can change or remove it at any time.</small>
+            </div>
+            <div class="form-group">
+              <label for="bio">Your Bio</label>
+              <textarea class="form-control autosize" id="bio" placeholder="Write something about you">A front-end developer that focus more on user interface design, a web interface wizard, a connector of awesomeness.</textarea>
+            </div>
+            <div class="form-group">
+              <label for="url">URL</label>
+              <input type="text" class="form-control" id="url" placeholder="Enter your website address" value="http://benije.ke/pozzivkij">
+            </div>
+            <div class="form-group">
+              <label for="location">Location</label>
+              <input type="text" class="form-control" id="location" placeholder="Enter your location" value="Bay Area, San Francisco, CA">
+            </div>
+            <div class="form-group small text-muted">
+              All of the fields on this page are optional and can be deleted at any time, and by filling them out, you're giving us consent to share this data wherever your user profile appears.
+            </div>
+            <button type="button" class="btn btn-primary">Update Profile</button>
+            <button type="reset" class="btn btn-light">Reset Changes</button>
+          </form>
+        </div>
+        <div class="tab-pane active" id="account">
+          <%= render "accounts/settings/accounts/form" %>
+        </div>
+        <div class="tab-pane" id="security">
+          <h6>SECURITY SETTINGS</h6>
+          <hr>
+          <form>
+            <div class="form-group">
+              <label class="d-block">Change Password</label>
+              <input type="text" class="form-control" placeholder="Enter your old password">
+              <input type="text" class="form-control mt-1" placeholder="New password">
+              <input type="text" class="form-control mt-1" placeholder="Confirm new password">
+            </div>
+          </form>
+          <hr>
+          <form>
+            <div class="form-group">
+              <label class="d-block">Two Factor Authentication</label>
+              <button class="btn btn-info" type="button">Enable two-factor authentication</button>
+              <p class="small text-muted mt-2">Two-factor authentication adds an additional layer of security to your account by requiring more than just a password to log in.</p>
+            </div>
+          </form>
+          <hr>
+          <form>
+            <div class="form-group mb-0">
+              <label class="d-block">Sessions</label>
+              <p class="font-size-sm text-secondary">This is a list of devices that have logged into your account. Revoke any sessions that you do not recognize.</p>
+              <ul class="list-group list-group-sm">
+                <li class="list-group-item has-icon">
+                  <div>
+                    <h6 class="mb-0">San Francisco City 190.24.335.55</h6>
+                    <small class="text-muted">Your current session seen in United States</small>
+                  </div>
+                  <button class="btn btn-light btn-sm ml-auto" type="button">More info</button>
+                </li>
+              </ul>
+            </div>
+          </form>
+        </div>
+        <div class="tab-pane" id="notification">
+          <h6>NOTIFICATION SETTINGS</h6>
+          <hr>
+          <form>
+            <div class="form-group">
+              <label class="d-block mb-0">Security Alerts</label>
+              <div class="small text-muted mb-3">Receive security alert notifications via email</div>
+              <div class="custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input" id="customCheck1" checked>
+                <label class="custom-control-label" for="customCheck1">Email each time a vulnerability is found</label>
+              </div>
+              <div class="custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input" id="customCheck2" checked>
+                <label class="custom-control-label" for="customCheck2">Email a digest summary of vulnerability</label>
+              </div>
+            </div>
+            <div class="form-group mb-0">
+              <label class="d-block">SMS Notifications</label>
+              <ul class="list-group list-group-sm">
+                <li class="list-group-item has-icon">
+                  Comments
+                  <div class="custom-control custom-control-nolabel custom-switch ml-auto">
+                    <input type="checkbox" class="custom-control-input" id="customSwitch1" checked>
+                    <label class="custom-control-label" for="customSwitch1"></label>
+                  </div>
+                </li>
+                <li class="list-group-item has-icon">
+                  Updates From People
+                  <div class="custom-control custom-control-nolabel custom-switch ml-auto">
+                    <input type="checkbox" class="custom-control-input" id="customSwitch2">
+                    <label class="custom-control-label" for="customSwitch2"></label>
+                  </div>
+                </li>
+                <li class="list-group-item has-icon">
+                  Reminders
+                  <div class="custom-control custom-control-nolabel custom-switch ml-auto">
+                    <input type="checkbox" class="custom-control-input" id="customSwitch3" checked>
+                    <label class="custom-control-label" for="customSwitch3"></label>
+                  </div>
+                </li>
+                <li class="list-group-item has-icon">
+                  Events
+                  <div class="custom-control custom-control-nolabel custom-switch ml-auto">
+                    <input type="checkbox" class="custom-control-input" id="customSwitch4" checked>
+                    <label class="custom-control-label" for="customSwitch4"></label>
+                  </div>
+                </li>
+                <li class="list-group-item has-icon">
+                  Pages You Follow
+                  <div class="custom-control custom-control-nolabel custom-switch ml-auto">
+                    <input type="checkbox" class="custom-control-input" id="customSwitch5">
+                    <label class="custom-control-label" for="customSwitch5"></label>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </form>
+        </div>
+        <div class="tab-pane" id="billing">
+          <h6>BILLING SETTINGS</h6>
+          <hr>
+          <form>
+            <div class="form-group">
+              <label class="d-block mb-0">Payment Method</label>
+              <div class="small text-muted mb-3">You have not added a payment method</div>
+              <button class="btn btn-info" type="button">Add Payment Method</button>
+            </div>
+            <div class="form-group mb-0">
+              <label class="d-block">Payment History</label>
+              <div class="border border-gray-500 bg-gray-200 p-3 text-center font-size-sm">You have not made any payment.</div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

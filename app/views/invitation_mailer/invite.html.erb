@@ -1,0 +1,23 @@
+<div class="container mt-4">
+
+
+  <div class="card mb-4 mt-4 bg-dark text-white">
+    <div class="card-body">
+      <h3 class="text-center mb-4">Hello <%= @invitation.username.capitalize %>! 🤗 </h3>
+
+      <p class="mb-4 text-center">
+        You have been invited to join the <strong><%= @invitation.account.name.capitalize %></strong>  account on PerTutor
+      </p>
+
+
+      <p class="mb-4">
+        <% accept_url = accept_invitation_url(
+          @invitation,
+          subdomain: @invitation.account.subdomain )%>
+
+
+        <%= link_to "Accept Invitation", accept_url, { class: "btn btn-success mx-auto mt-2", style: "width: 95%" } %>
+      </p>
+    </div>
+  </div>
+</div>

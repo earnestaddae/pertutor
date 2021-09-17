@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  account: one
+  user: one
+  content: MyText
+  tuition_date: 2020-12-18 22:43:57
+  budget: 9.99
+
+two:
+  account: two
+  user: two
+  content: MyText
+  tuition_date: 2020-12-18 22:43:57
+  budget: 9.99

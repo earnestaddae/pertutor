@@ -1,0 +1,62 @@
+<tr>
+<!--  <td>
+  <div class="custom-control custom-control-nolabel custom-checkbox">
+    <input type="checkbox" class="custom-control-input" id="checkbox1">
+    <label for="checkbox1" class="custom-control-label"></label>
+  </div>
+</td> -->
+  <td class="text-center"><a href="#detailRow<%= registration.id %>" class="detail-toggle text-secondary" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="detailRow1"></a></td>
+  <td class="text-center"><%= registration.student.username.capitalize %></td>
+  <td class="text-center"><%= lecture_status(registration.lecture) %></td>
+  <td class="text-center">
+    <% if registration&.lecture&.students&.include?(current_user) && registration.lecture.end_date >= Date.today  %>
+      <%= link_to "Go to Class", "#", class: "btn btn-primary btn-sm" %>
+    <% end %>
+  </td>
+  <!-- <td>Tokyo</td> -->
+  <td class="text-center">
+    <div class="btn-group btn-group-sm" role="group">
+      <!-- allow unenrolment when class is still live -->
+       <%# unless !registration.nil? %>
+        <% if registration&.lecture&.end_date > Date.today %>
+          <%= link_to "Unenrol", lecture_registration_path(registration.lecture,registration), method: :delete, data: {confirm: "Are you sure to unenrolment?"}, class: "btn btn-danger btn-sm" %>
+        <% end %>
+         <!-- disallow unenrolment when class is passed -->
+        <% if registration&.lecture&.end_date < Date.today %>
+           <%= link_to "Enrolled", "#", class: "btn btn-primary btn-sm disabled" %>
+         <% end %>
+        <%# end %>
+    </div>
+  </td>
+</tr>
+<tr class="detail-row collapse" id="detailRow<%= registration.id %>">
+  <td colspan="7">
+    <ul class="data-detail ml-5">
+      <li><span>Instructor:</span><span> <%= registration&.tutor&.username&.capitalize %></span></li>
+      <li><span>Lesson title:</span><span> <%= registration&.lecture&.title %></span></li>
+      <li><span>Lesson summary:</span><span> <%= registration&.lecture&.summary %></span></li>
+      <li><span>Start date:</span><span> <%= registration&.lecture&.start_date&.strftime("%a, %d %b %Y @ %l:%M %p") %></span></li>
+      <li><span>End date:</span><span> <%= registration&.lecture&.end_date&.strftime("%a, %d %b %Y @ %l:%M %p") %></span></li>
+      <li><span>Price:</span><span> <%= humanized_money_with_symbol(registration&.lecture&.price) %></span></li>
+      <li> <span>Ready?: </span> <span>
+        <% if registration&.lecture&.students&.include?(current_user) && registration&.lecture&.end_date >= Date.today  %>
+      <%= link_to "Go to Class", "#", class: "btn btn-primary btn-xs" %>
+    <% end %>
+      </span> </li>
+    <li><span>Not Sure?</span> <span>
+      <%# unless !registration.nil? %>
+        <% if (registration&.lecture&.end_date > Date.today) %>
+          <%= link_to "Unenrol", lecture_registration_path(registration.lecture, registration), method: :delete, data: {confirm: "Are you sure to unenrolment?"}, class: "btn btn-danger btn-xs" %>
+        <% end %>
+         <!-- disallow unenrolment when class is passed -->
+        <% if registration&.lecture&.end_date < Date.today %>
+           <%= link_to "Enrolled", "#", class: "btn btn-primary btn-xs disabled" %>
+         <% end %>
+      <%# end %>
+    </span></li>
+      <!-- <li><span>Extn.</span><span>5407</span></li> -->
+      <!-- <li><span>E-mail</span><span>a.satou@datatables.net</span></li> -->
+    </ul>
+  </td>
+</tr>
+

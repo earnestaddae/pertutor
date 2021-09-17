@@ -1,0 +1,12 @@
+<!-- Breadcrumb -->
+<nav aria-label="breadcrumb card-body">
+  <ol class="breadcrumb border breadcrumb-style1">
+    <li class="breadcrumb-item"><a href="<%= admin_root_url %>">Home</a></li>
+    <li class="breadcrumb-item"><a href="<%= lectures_path %>">Lessons</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Editing <%= @lecture.title %></li>
+  </ol>
+</nav>
+<!-- /Breadcrumb -->
+
+
+<%= render "form", lecture: @lecture %>

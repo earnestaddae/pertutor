@@ -1,0 +1,65 @@
+ <!-- Inner main -->
+  <div class="transition-none mail-content">
+
+    <!-- Inner main header -->
+    <div class="inner-main-header">
+      <a href="<%= owner? ? admin_questions_path : personal_questions_path %>" class="btn btn-light btn-sm has-icon"><i class="fas fa-chevron-left mr-2"></i>Questions</a>
+     <!--  <div class="btn-group btn-group-sm ml-2" role="group">
+        <button type="button" class="btn has-icon text-success" data-toggle="tooltip" data-trigger="hover" title="Archive"><i data-feather="archive"></i></button>
+        <button type="button" class="btn has-icon text-info" data-toggle="tooltip" data-trigger="hover" title="Report spam"><i data-feather="alert-octagon"></i></button>
+        <button type="button" class="btn has-icon text-danger" data-toggle="tooltip" data-trigger="hover" title="Delete"><i data-feather="trash"></i></button>
+        <button type="button" class="btn has-icon no-caret dropdown-toggle" data-toggle="dropdown" data-display="static"><i data-feather="chevron-down"></i></button>
+        <div class="dropdown-menu dropdown-menu-right">
+          <button class="dropdown-item" type="button">Move</button>
+          <button class="dropdown-item" type="button">Mark as unread</button>
+          <button class="dropdown-item" type="button">Mute</button>
+          <button class="dropdown-item" type="button">Print</button>
+          <div class="dropdown-divider"></div>
+          <h6 class="dropdown-header text-muted">Label as</h6>
+          <button class="dropdown-item" type="button">Social</button>
+          <button class="dropdown-item" type="button">Promotions</button>
+          <button class="dropdown-item" type="button">Updates</button>
+          <button class="dropdown-item" type="button">Jobstreet</button>
+        </div>
+      </div> -->
+     <!--  <div class="ml-auto flex-center">
+        <small class="text-secondary mr-2 d-none d-sm-block">5 of 347</small>
+        <button class="btn btn-sm btn-light btn-icon border-0 rounded-circle"><i class="material-icons">chevron_left</i></button>
+        <button class="btn btn-sm btn-light btn-icon border-0 rounded-circle"><i class="material-icons">chevron_right</i></button>
+      </div> -->
+    </div>
+    <!-- /Inner main header -->
+
+    <!-- Inner main body -->
+    <div class="inner-main-body p-0 bg-white">
+      <div class="card rounded-0">
+        <div class="card-body font-size-sm">
+          <div class="media mb-3 align-items-center">
+            <%= image_tag(gravatar_image_url(@question&.user&.email, secure: false), class: "rounded", width: 50, height: 50) %>
+            <div class="media-body text-muted ml-3">
+              <h6 class="mb-0 text-dark"><%= @question&.user&.username&.capitalize %></h6>
+              <div class="small">to me</div>
+              <div class="small"><%= @question&.created_at.strftime("%a, %d %b %Y @ %l:%M %p") %>
+                <!-- <a href="javascript:void(0)">Details</a> -->
+              </div>
+            </div>
+            <div class="btn-group">
+              <button type="button" class="btn-starred btn btn-icon" data-toggle="button" aria-pressed="false">
+                <i class="far fa-edit"></i>
+              </button>
+              <buton type="button" class="btn btn-icon"><i class="far fa-trash-alt"></i></buton>
+            </div>
+          </div>
+          <h5> <%= @question&.title %></h5>
+          <hr>
+          <%= @question&.body %>
+          <div class="btn-group-sm pt-3">
+            <!-- <button class="btn btn-light has-icon justify-content-center" type="button"><i class="fa mr-2 fa-reply"></i>Reply</button> -->
+            <!-- <button class="btn btn-light has-icon justify-content-center" type="button"><i class="fa mr-2 fa-forward"></i>Forward</button> -->
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- /Inner main body -->
+  </div>
+  <!-- /Inner main -->

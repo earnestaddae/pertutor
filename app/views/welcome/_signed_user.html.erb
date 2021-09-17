@@ -1,0 +1,79 @@
+<section id="section1">
+  <div class="container">
+    <h5>Channels I Own</h5>
+    <p class="text-secondary font-size-sm">
+      The list of channels you own and act as the administrator
+    </p>
+  </div>
+  <div class="container">
+    <div class="row">
+      <% if current_user.owned_accounts.any? %>
+        <% current_user.owned_accounts.each do |account| %>
+          <div class="col-6 mb-3">
+           <div class="card">
+            <div class="card-body">
+              <div class="media">
+                <% unless account.account_logo.attached? %>
+                  <%= image_tag("https://www.dropbox.com/s/qor1lcj4fj4wapx/logo_1.png?dl=1", class: "mr-3 rounded-circle", width: 75) %>
+                <% end %>
+                <%= image_tag(account&.account_logo, class: "align-self-center mr-3 rounded-circle", width: 75) if account.account_logo.attached? %>
+                <div class="media-body">
+                  <h5><%= account&.name&.capitalize %></h5>
+                  <h6><%= account&.tagline %></h6>
+                  <p class="text-secondary font-size-sm mb-0">
+                    <a href=" <%= root_url(subdomain: account.subdomain.downcase) %>" class="btn btn-primary btn-sm has-icon btn-block" type="button"><i class="fas fa-chalkboard mr-2"></i>Enter Channel</a>
+                  </p>
+                </div>
+              </div>
+              </div>
+            </div>
+          </div>
+        <% end %>
+        <% else %>
+        <%= link_to "Create a Channel", new_account_path, class: "btn btn-original" %>
+      <% end %>
+    </div>
+  </div>
+</section>
+
+<div class="mt-5"></div>
+
+<section id="section1">
+  <div class="container">
+    <h5>Subscribed Channels</h5>
+    <p class="text-secondary font-size-sm">
+      The list of channels you are subscribed to
+    </p>
+  </div>
+  <div class="container">
+    <div class="row">
+      <% if current_user.accounts.any? %>
+        <% current_user.accounts.each do |account| %>
+          <div class="col-6 mb-3">
+           <div class="card">
+            <div class="card-body">
+              <div class="media">
+                <% unless account.account_logo.attached? %>
+                  <%= image_tag("https://www.dropbox.com/s/qor1lcj4fj4wapx/logo_1.png?dl=1", class: "mr-3 rounded-circle", width: 75) %>
+                <% end %>
+                <%= image_tag(account&.account_logo, class: "align-self-center mr-3 rounded-circle", width: 75) if account.account_logo.attached? %>
+                <div class="media-body">
+                  <h5><%= account&.name&.capitalize %></h5>
+                  <h6><%= account&.tagline %></h6>
+                  <p class="text-secondary font-size-sm mb-0">
+                    <a href=" <%= root_url(subdomain: account.subdomain.downcase) %>" class="btn btn-success btn-sm has-icon btn-block" type="button"><i class="fas fa-chalkboard-teacher mr-2"></i>Enter Channel</a>
+                  </p>
+                </div>
+              </div>
+              </div>
+            </div>
+          </div>
+        <% end %>
+        <% else %>
+        <h6>You've not subscribed to any channels</h6>
+      <% end %>
+    </div>
+  </div>
+</section>
+
+

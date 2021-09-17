@@ -1,0 +1,46 @@
+<!-- Breadcrumb -->
+<nav aria-label="breadcrumb card-body">
+  <ol class="breadcrumb border breadcrumb-style1">
+    <li class="breadcrumb-item"><a href="<%= root_url(subdomain: current_account.subdomain) %>">Home</a></li>
+    <li class="breadcrumb-item"><a href="<%= forums_path %>">Discussions</a></li>
+  </ol>
+</nav>
+<!-- /Breadcrumb -->
+
+<div class="inner-wrapper">
+
+  <!-- Inner sidebar -->
+    <%= render "shared/forum_sidebar" %>
+  <!-- /Inner sidebar -->
+  <!-- Inner main -->
+  <div class="inner-main">
+
+    <!-- Inner main header -->
+     <%= render "shared/forum_header" %>
+    <!-- /Inner main header -->
+
+    <!-- Inner main body -->
+
+    <!-- Forum List -->
+    <div class="inner-main-body p-2 p-sm-3 collapse forum-content show">
+      <% if @forums.any? %>
+        <% @forums.each do |forum| %>
+          <%= render forum %>
+        <% end %>
+      <% else %>
+        <h6>No disccussions</h6>
+      <% end %>
+      <ul class="pagination pagination-sm pagination-circle justify-content-center mb-0">
+        <li class="page-item disabled"><span class="page-link has-icon"><i class="material-icons">chevron_left</i></span></li>
+        <li class="page-item"><a class="page-link" href="javascript:void(0)">1</a></li>
+        <li class="page-item active"><span class="page-link">2</span></li>
+        <li class="page-item"><a class="page-link" href="javascript:void(0)">3</a></li>
+        <li class="page-item"><a class="page-link has-icon" href="javascript:void(0)"><i class="material-icons">chevron_right</i></a></li>
+      </ul>
+    </div>
+    <!-- /Forum List -->
+
+    <!-- /Inner main body -->
+  </div>
+  <!-- /Inner main -->
+</div>

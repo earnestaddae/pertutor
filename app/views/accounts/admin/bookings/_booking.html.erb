@@ -1,0 +1,32 @@
+<tr>
+<!--  <td>
+  <div class="custom-control custom-control-nolabel custom-checkbox">
+    <input type="checkbox" class="custom-control-input" id="checkbox1">
+    <label for="checkbox1" class="custom-control-label"></label>
+  </div>
+</td> -->
+  <td class="text-center"><a href="#detailRow<%= booking.id %>" class="detail-toggle text-secondary" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="detailRow1"></a></td>
+  <td class="text-center"><%= booking.user.username.capitalize %></td>
+  <td class="text-center"><%= booking_status(booking) %></td>
+  <!-- <td>Accountant</td> -->
+  <!-- <td>Tokyo</td> -->
+  <td class="text-center">
+    <div class="btn-group btn-group-xs" role="group">
+      <a href="javascript:void(0)" class="btn btn-link btn-icon bigger-130 text-success"><i class="fas fa-user-check"></i></a>
+      <a href="javascript:void(0)" class="btn btn-link btn-icon bigger-130 text-primary"><i class="far fa-envelope"></i></a>
+      <a href="javascript:void(0)" class="btn btn-link btn-icon bigger-130 text-danger"><i class="fas fa-ban"></i></a>
+    </div>
+  </td>
+</tr>
+<tr class="detail-row collapse" id="detailRow<%= booking.id %>">
+  <td colspan="7">
+    <ul class="data-detail ml-5">
+      <li><span>Title</span><span> <%= booking&.title %></span></li>
+      <li><span>Challenge</span><span> <%= booking.content %></span></li>
+      <li><span>Tuition date</span><span> <%= booking.schedule.available_date.strftime("%a, %d %b %Y @ %l:%M %p") %></span></li>
+      <li><span>Budget</span><span> <%= humanized_money_with_symbol(booking.schedule.price) %></span></li>
+      <li><span>Payment type</span> <span><%= booking&.pay_type %></span></li>
+      <!-- <li><span>E-mail</span><span>a.satou@datatables.net</span></li> -->
+    </ul>
+  </td>
+</tr>

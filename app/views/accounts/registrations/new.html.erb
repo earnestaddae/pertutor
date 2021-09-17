@@ -1,0 +1,14 @@
+<div class="container">
+  <div class="row">
+    <div class="col-lg-8 offset-lg-2 col-sm-12 col-md-6 justify-content-center align-items-start mb-5 p-1">
+      <div class="card mb-3">
+        <div class="card-body p-4">
+          <h4><span class="text-capitalize"><%= @lecture&.title&.capitalize %></span></h4>
+          <p class="font-weight-light text-secondary"> Completing payment of  <%= humanized_money_with_symbol(@lecture&.price) %> to enroll in the lesson on <span class="text-primary"><%= time_format(@lecture.start_date)  %></span>
+          </p>
+            <%= render 'form', lecture: @lecture, registration: @registration %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

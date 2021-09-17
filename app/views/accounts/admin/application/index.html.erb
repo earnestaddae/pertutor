@@ -1,0 +1,202 @@
+<!-- <div class="main-body"> -->
+<div class="row gutters-sm">
+<!-- Connections -->
+  <div class="col-sm-6 col-xl-3 mb-3">
+    <div class="card h-100">
+      <div class="card-body">
+        <div class="flex-center justify-content-start mb-2">
+          <i class="mr-2 font-size-lgs fas fa-chalkboard-teacher"></i>
+          <h3 class="card-title mb-0 mr-auto"><%= @schedules&.count %></h3>
+          <span id="connections"> <%= link_to "View Schedule", admin_schedules_path, class: "btn btn-primary btn-xs" %></span>
+        </div>
+        <h6 class="text-primary">SCHEDULE</h6>
+        <p class="small text-secondary mb-0">List of all the available teaching dates.</p>
+      </div>
+    </div>
+  </div>
+  <!-- /Connections -->
+
+  <!-- Your Articles -->
+  <div class="col-sm-6 col-xl-3 mb-3">
+    <div class="card h-100">
+      <div class="card-body">
+        <div class="flex-center justify-content-start mb-2">
+          <i class="fas fa-clipboard-list mr-2 font-size-lgs"></i>
+          <h3 class="card-title mb-0 mr-auto"><%= @bookings.count %></h3>
+          <span id="yourArticles"> <%= link_to "View Bookings", admin_bookings_path, class: "btn btn-danger btn-xs" %></span>
+        </div>
+        <h6 class="text-danger">BOOKINGS</h6>
+        <p class="small text-secondary mb-0">Lessons students want to learn about.</p>
+      </div>
+    </div>
+  </div>
+  <!-- Your /Articles -->
+
+  <!-- Your Photos -->
+ <!--  <div class="col-sm-6 col-xl-3 mb-3">
+    <div class="card h-100">
+      <div class="card-body">
+        <div class="flex-center justify-content-start mb-2">
+          <i class="fas fa-book mr-2 font-size-lgs"></i>
+          <h3 class="card-title mb-0 mr-auto"> <%#= @forums.count %></h3>
+          <span id="yourPhotos"><%#= link_to "Forum", forums_path, class: "btn btn-success btn-xs" %></span>
+        </div>
+        <h6 class="text-success">DISCUSSIONS</h6>
+        <p class="small text-secondary mb-0">Books published to be sold to students</p>
+      </div>
+    </div>
+  </div> -->
+  <!-- Your /Photos -->
+
+  <!-- Page Likes -->
+  <div class="col-sm-6 col-xl-3 mb-3">
+    <div class="card h-100">
+      <div class="card-body">
+        <div class="flex-center justify-content-start mb-2">
+          <i class="far fa-question-circle mr-2 font-size-lgs"></i>
+          <h3 class="card-title mb-0 mr-auto"><%= @questions.count %></h3>
+          <span id="pageLikes"><%= link_to "View Questions", admin_questions_path, class: "btn btn-info btn-xs" %></span>
+        </div>
+        <h6 class="text-info">QUESTIONS</h6>
+        <p class="small text-secondary mb-0">Direct questions from students.</p>
+      </div>
+    </div>
+  </div>
+  <!-- Page /Likes -->
+</div>
+
+<div class="row gutters-sm">
+  <!-- Lesson History -->
+  <% if @past_bookings.any? %>
+  <div class="col-md-6 col-xl-4 mb-3">
+    <div class="card h-100 overflow-hidden" id="transaction-history">
+      <div class="card-header py-1">
+        <h6>Completed Bookings</h6>
+        <button type="button" data-action="reload" class="btn btn-sm text-success btn-icon ml-auto rounded-circle">
+          <!-- <i class="material-icons">refresh</i>  -->
+          <span class="badge badge-info"> <%= @past_bookings.count %></span>
+        </button>
+       <!--  <div class="dropdown">
+          <button class="btn text-secondary btn-icon btn-sm rounded-circle dropdown-toggle no-caret" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="material-icons">more_vert</i>
+          </button>
+          <div class="dropdown-menu dropdown-menu-right">
+            <button class="dropdown-item" type="button">Action</button>
+            <button class="dropdown-item" type="button">Another action</button>
+          </div>
+        </div> -->
+      </div>
+      <ul class="list-group list-group-flush">
+        <% @past_bookings.each do |booking| %>
+          <li class="list-group-item d-flex">
+            <div class="media">
+              <span class="flex-center text-success p-2">
+                <i class="material-icons">check</i>
+              </span>
+              <div class="media-body ml-2">
+                <h6 class="font-size-sm mb-0 text-capitalize"><%= booking.title.capitalize %></h6>
+                <span class="small text-secondary">  <%= booking.schedule.available_date.strftime("%a, %d %b %Y @ %l:%M %p") %></span>
+              </div>
+            </div>
+            <div class="ml-auto text-right">
+              <h6 class="mb-0">+ <%= humanized_money_with_symbol(booking.schedule.price) %> </h6>
+              <span class="small text-success"> <%= booking_status(booking) %></span>
+            </div>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+  <% end %>
+  <!-- /Lesson History -->
+
+   <!-- New Bookings -->
+   <% if @schedules.any? %>
+    <div class="col-md-6 col-xl-4 mb-3">
+      <div class="card h-100 overflow-hidden" id="new-customers">
+        <div class="card-header py-1">
+          <h6>Your Schedule</h6>
+          <a type="button" href="<%= new_admin_schedule_path %>" data-action="reload" class="btn btn-sm text-success btn-icon ml-auto rounded-circle">
+            <i class="material-icons">add</i>
+            <span class="badge badge-info ml-1"> <%= @schedules.count %></span>
+          </a>
+        </div>
+        <ul class="list-group list-group-flush">
+          <% @schedules.each do |schedule| %>
+            <% unless schedule.bookings.any? %>
+              <li class="list-group-item d-flex align-items-center">
+                <div class="media">
+                  <%= image_tag(gravatar_image_url(current_account.owner.email, secure: false), class: "rounded", width: 50) %>
+                  <div class="media-body ml-2">
+                    <h6 class="font-size-sm mb-0 text-capitalize"> <%= schedule.available_date.strftime("%a, %d %b %Y @ %l:%M %p") %></h6>
+                    <span class="small mr-2 badge badge-primary"><%= humanized_money_with_symbol(schedule.price) %></span>
+                    <span class="badge badge-info mr-2"><%= schedule_medium(schedule) %></span>
+                    <!-- <span class="badge badge-success"><%#= schedule&.students_allowed %></span> -->
+                  </div>
+                </div>
+                <div class="btn-group btn-group-sm ml-auto" role="group">
+                  <% owners_only do %>
+                    <!-- <a href="<%#= admin_schedule_path(schedule) %>" class="btn text-secondary btn-icon rounded-circle"><i class="fas fa-eye"></i></a> -->
+                    <a href=" <%= edit_admin_schedule_path(schedule) %>" class="btn text-secondary btn-icon rounded-circle"><i class="fas fa-edit"></i></a>
+                    <%= link_to admin_schedule_path(schedule), method: :delete, data: {confirm: "Are you sure?"}, class: "btn text-danger btn-icon rounded-circle"  do %>
+                      <i class="far fa-trash-alt"></i>
+                    <% end %>
+                  <% end %>
+                </div>
+              </li>
+            <% end %>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  <% end %>
+  <!-- /New Bookings -->
+
+  <!-- User Activities -->
+  <div class="col-md-6 col-xl-4 mb-3">
+    <div class="card h-100 overflow-hidden" id="new-customers">
+      <div class="card-header py-1">
+        <h6>Upcoming Bookings</h6>
+        <button type="button" data-action="reload" class="btn btn-sm text-success btn-icon ml-auto rounded-circle">
+          <!-- <i class="material-icons">add</i> -->
+          <span class="badge badge-info ml-1"><%= @upcoming_bookings.count %></span>
+        </button>
+        <!-- <div class="dropdown">
+          <button class="btn text-secondary btn-icon btn-sm rounded-circle dropdown-toggle no-caret" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="material-icons">more_vert</i>
+          </button>
+          <div class="dropdown-menu dropdown-menu-right">
+            <button class="dropdown-item" type="button">Action</button>
+            <button class="dropdown-item" type="button">Another action</button>
+          </div>
+        </div> -->
+      </div>
+      <ul class="list-group list-group-flush">
+        <% @upcoming_bookings.each do |booking| %>
+          <%# if booking.schedule.available_date > Date.today %>
+            <li class="list-group-item d-flex align-items-center">
+              <div class="media">
+                <%= image_tag(gravatar_image_url(booking.user.email, secure: false), class: "rounded-circle", width: 40) %>
+                <div class="media-body ml-2">
+                  <h6 class="font-size-sm mb-0"><%= booking.schedule.available_date.strftime("%a, %d %b %Y @ %l:%M %p") %></h6>
+                  <span class="small text-secondary">Price: <%= humanized_money_with_symbol(booking.schedule.price) %> </span>
+                  <div></div>
+                  <span class="small text-secondary">Challenge:  <%= booking&.title %></span>
+                  <div></div>
+                  <span class="small text-secondary">Student:  <%= booking&.user&.username.capitalize %></span>
+                </div>
+              </div>
+              <div class="btn-group btn-group-sm ml-auto" role="group">
+                <a href="javascript:void(0)" class="btn text-secondary btn-icon rounded-circle"><i class="fas fa-user-check"></i></a>
+                <a href="javascript:void(0)" class="btn text-secondary btn-icon rounded-circle"><i class="far fa-envelope"></i></a>
+                <a href="javascript:void(0)" class="btn text-danger btn-icon rounded-circle"><i class="fas fa-ban"></i></a>
+              </div>
+            </li>
+            <%# end %>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+  <!-- /User Activities -->
+</div>
+<!-- </div> -->

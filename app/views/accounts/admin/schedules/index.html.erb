@@ -1,0 +1,29 @@
+<div class="container">
+  <div class="d-flex">
+    <div class="list-with-gap">
+      <a href="<%= new_admin_schedule_path %>" class="btn btn-primary btn-sm has-icon" type="button"><i class="material-icons mr-2">event</i>Add Schedule</a>
+      <a href="<%= admin_bookings_path %>" class="btn btn-success btn-sm has-icon d-sm-block" type="button"><i class="fas fa-clipboard-list mr-2"></i>Bookings</a>
+    </div>
+  </div>
+</div>
+
+
+
+<div class="container mt-5">
+  <div class="card">
+    <div class="card-body">
+      <h4>Your Teaching Schedule</h4>
+      <%= month_calendar(events: @schedules) do |date, schedules| %>
+        <%= date %>
+
+        <% schedules.each do |schedule| %>
+          <div class="text-primary">
+            <%= schedule.online? ? "Online" : "In Person" %>
+            <%= humanized_money_with_symbol(schedule.price) %> <br>
+            <%= schedule.bookings.any? ? "Booked!" : "Available" %>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>

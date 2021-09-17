@@ -1,0 +1,35 @@
+<!-- Breadcrumb -->
+<nav aria-label="breadcrumb card-body">
+  <ol class="breadcrumb border breadcrumb-style1">
+    <li class="breadcrumb-item"><a href="<%= admin_root_url %>">Home</a></li>
+    <li class="breadcrumb-item"><a href="<%= admin_users_path %>">Users</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Editing</li>
+  </ol>
+</nav>
+<!-- /Breadcrumb -->
+
+<div class="container">
+  <div class="row">
+    <div class="col-lg-8 offset-lg-2 col-sm-12 col-md-6 justify-content-center align-items-start mb-5">
+      <div class="card mb-3">
+        <div class="card-body p-4">
+          <h2>Editing User</h2>
+          <p class="font-weight-light text-secondary">Email & username can't be modified</p>
+          <%= simple_form_for([:admin, @user]) do |f| %>
+            <%= f.error_notification %>
+            <fieldset class="form-fieldset">
+              <legend>Role Update</legend>
+              <%= f.input :username, readonly: true, placeholder: "Username", wrapper_html: {class: "form-group"}, input_html: { class: "form-control"} %>
+              <%= f.input :email, readonly: true, placeholder: "Email", wrapper_html: {class: "form-group"}, input_html: { class: "form-control-plaintext" } %>
+                 <%= f.input :roles, label: "Assign Role", as: :radio_buttons, collection: @choices %>
+                 <%#= f.collection_check_boxes :role_ids, Role.all, :id, :name, input_html: { class: "form-control" } %>
+                 <%= f.error :roles, class: "text-danger" %>
+            </fieldset>
+
+            <%= f.submit "Update User", class: "btn btn-primary" %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

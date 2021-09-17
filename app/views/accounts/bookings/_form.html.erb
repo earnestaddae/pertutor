@@ -1,0 +1,29 @@
+<%= simple_form_for [schedule, booking] do |f| %>
+  <%= f.error_notification %>
+  <!-- <div class="modal-body"> -->
+    <p class="text-danger">
+     Lesson Date: <%= time_format(schedule.available_date)  %>
+    </p>
+    <%= f.input :title, placeholder: "Title of lesson", wrapper_html: { class: "form-group" }, input_html: { class: "form-control", id: "mailTo", autocomplete: "off" } %>
+
+    <%= f.input :content, as: :rich_text_area, placeholder: "Provide a brief description of your challenge to help me learn tailor a solution", wrapper_html: { class: "form-group" }, input_html: { class: "form-control", id: "blogTitle", autocomplete: "off" } %>
+
+    <%= f.input :schedule_id, as: :hidden %>
+    <%= f.association :schedule, as: :hidden, label_method: :available_date, value_method: :id, wrapper_html: { class: "form-group" }, input_html: {class: "form-control" } %>
+
+
+    <%= f.input :pay_type, label: false, collection: Booking.pay_types.keys, as: :collection_select, input_html: { class: "form-control select2"}, prompt: "Choose payment type" %>
+
+    <%#= f.input :pay_provider, label: false, collection: Booking.pay_providers.keys, as: :collection_select, input_html: { class: "form-control select2" }, prompt: "Choose network provider" %>
+
+    <%#= f.input :tuition_date, label: "When?", as: :date, start_year: Date.today.year, end_year: Date.today.year + 1, order: [:day, :month, :year], prompt: true, placeholder: "Lesson start date & time", wrapper_html: { class: "form-group" }, input_html: {class: "form-control" } %>
+    <%#= f.input :tuition_date, label: "Time", as: :time, ampm: true,  prompt: true, ignore_date: true, placeholder: "Lesson start date & time", wrapper_html: { class: "form-group" }, input_html: {class: "form-control" } %>
+
+    <%#= f.input :budget, label: "Budget", wrapper_html: { class: "form-group" }, input_html: {class: "form-control" }, hint: "Please note a lesson is per hour" %>
+  <!-- </div> -->
+
+  <!-- <div class="modal-footer"> -->
+    <a href="<%= personal_bookings_path %>" type="button" class="btn btn-light">Back</a>
+    <%= f.button :submit, "Pay #{humanized_money_with_symbol(schedule.price)} only", class: "btn btn-primary" %>
+  <!-- </div> -->
+<% end %>

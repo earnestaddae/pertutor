@@ -1,0 +1,26 @@
+<div class="inner-sidebar">
+
+  <!-- Inner sidebar header -->
+  <div class="inner-sidebar-header justify-content-center">
+    <a class="btn btn-primary has-icon btn-block" href="<%= new_forum_path %>" type="button">
+      <i class="fas fa-plus mr-2"></i> NEW DISCUSSION
+    </a>
+  </div>
+  <!-- /Inner sidebar header -->
+
+  <!-- Inner sidebar body -->
+  <div class="inner-sidebar-body p-0">
+    <div class="p-3 h-100" data-simplebar>
+      <nav class="nav nav-pills nav-gap-y-1 flex-column">
+        <a href="<%= forums_path %>" class="nav-link nav-link-faded has-icon active"><i class="material-icons mr-2">chat</i>All Threads</a>
+        <a href="<%= forums_path %>" class="nav-link nav-link-faded has-icon"><i class="material-icons mr-2">stars</i>Popular Threads</a>
+        <a href="<%= forums_path %>" class="nav-link nav-link-faded has-icon"><i class="material-icons mr-2">stars</i>Latest Threads</a>
+        <a href="<%= forums_path %>" class="nav-link nav-link-faded has-icon"><i class="material-icons mr-2">check_circle_outline</i>Your Threads</a>
+        <!-- <a href="javascript:void(0)" class="nav-link nav-link-faded has-icon"><i class="material-icons mr-2">highlight_off</i>Unsolved</a> -->
+        <!-- <a href="javascript:void(0)" class="nav-link nav-link-faded has-icon"><i class="material-icons mr-2">reply</i>No replies yet</a> -->
+      </nav>
+    </div>
+  </div>
+  <!-- /Inner sidebar body -->
+
+</div>

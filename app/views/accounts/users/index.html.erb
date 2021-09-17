@@ -1,0 +1,33 @@
+<!-- Breadcrumb -->
+<nav aria-label="breadcrumb" class="main-breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="<%= root_url(subdomain: current_account.subdomain) %>">Home</a></li>
+    <li class="breadcrumb-item active"><a href="<%= users_path %>">Users</a></li>
+  </ol>
+</nav>
+<!-- /Breadcrumb -->
+<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-xl-4 gutters-sm">
+    <% if @users.any? %>
+      <% @users.each do |user| %>
+        <div class="col mb-3 mt-3">
+          <div class="card">
+             <%#= image_tag "https://www.dropbox.com/s/hs8731z1wtcyzqx/pattern1-wide.png?dl=1", class: "card-img-top" %>
+            <!-- <img src="../../../dist/img/pattern/pattern1-wide.png" alt="Cover" class="card-img-top"> -->
+            <div class="card-body text-center">
+              <%= image_tag(gravatar_image_url(user.email, secure: false), class: "img-fluid img-thumbnail rounded-circle border-0 mb-3 members") %>
+              <!-- <img src="../../../dist/img/user.svg" style="width:100px;margin-top:-65px" alt="User" class="img-fluid img-thumbnail rounded-circle border-0 mb-3"> -->
+              <h5 class="card-title"><%= user.username.capitalize %></h5>
+              <p class="text-secondary mb-1">Invitee</p>
+              <p class="text-muted font-size-sm">Invited by account owner</p>
+            </div>
+            <div class="card-footer">
+              <button class="btn btn-light btn-sm bg-white has-icon btn-block" type="button"><i class="material-icons">add</i>Follow</button>
+              <button class="btn btn-light btn-sm bg-white has-icon ml-2" type="button"><i class="material-icons">chat_bubble_outline</i></button>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    <% else %>
+      <h6>There are no members on this account...yet</h6>
+    <% end %>
+</div>

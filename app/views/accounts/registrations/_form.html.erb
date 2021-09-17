@@ -1,0 +1,12 @@
+<%= simple_form_for [lecture, registration] do |f| %>
+  <%= f.error_notification %>
+
+  <%= f.input :student_id, as: :hidden %>
+
+  <%= f.input :pay_type, label: false, collection: Registration.pay_types.keys, as: :collection_select, input_html: { class: "form-control select2"}, prompt: "Choose payment type" %>
+
+  <%= f.input :pay_provider, label: false, collection: Registration.pay_providers.keys, as: :collection_select, input_html: { class: "form-control select2" }, prompt: "Choose network provider" %>
+
+  <!-- <div class="mt-2"></div> -->
+  <%= f.button :submit, "Pay #{humanized_money_with_symbol(lecture.price)} only", class: "btn btn-success" %>
+<% end %>

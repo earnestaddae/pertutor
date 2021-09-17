@@ -1,0 +1,36 @@
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-lg-6 offset-lg-3 col-xl-4 d-flex justify-content-center align-items-start">
+      <div class="card mb-3">
+        <div class="card-body p-4">
+          <h3>Change your password</h3>
+          <p class="font-weight-light text-secondary">Enter &amp; confirm password</p>
+          <hr>
+            <%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
+              <%= f.error_notification %>
+
+              <%= f.input :reset_password_token, as: :hidden %>
+              <%= f.full_error :reset_password_token %>
+
+              <div class="form-inputs">
+                <%= f.input :password,
+                            label: "New password",
+                            required: true,
+                            autofocus: true,
+                            hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length), input_html: { class: "form-control bg-gray-200 border-gray-200", autocomplete: "new-password" }, wrapper_html: { class: "form-group" }, label_html: { class: "font-size-sm"} %>
+                <%= f.input :password_confirmation,
+                            label: "Confirm your new password",
+                            required: true, input_html: { class: "form-control bg-gray-200 border-gray-200", autocomplete: "new-password" }, wrapper_html: { class: "form-group" } %>
+              </div>
+              <%= f.button :submit, "Change my password", class: "btn btn-success btn-block" %>
+
+            <% end %>
+            <div class="divider-text">Already have an account?</div>
+
+            <%= render "devise/shared/links" %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

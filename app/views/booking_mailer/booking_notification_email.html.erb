@@ -1,0 +1,27 @@
+<div class="container mt-4">
+
+
+  <div class="card mb-4 mt-4 bg-dark text-white">
+    <div class="card-body">
+      <h3 class="text-center mb-4">Congrats <%= @owner.username.capitalize %>! 🤗 </h3>
+
+      <p class="mb-4 text-center">
+        You have a new 1-on-1 lesson booking by <strong><%= @booking.user.username.capitalize %></strong>
+      </p>
+
+      <div class="mb-4">
+        Lesson Details: <br>
+        <span class="text-danger">Date: <%= @booking.schedule.available_date.strftime("%A, %d %b %Y @ %l:%M %p") %></span> <br>
+        <span>Title: <%= @booking.title %> </span> <br>
+        <span>
+          Challenge: <%= @booking.content %>
+        </span>
+      </div>
+
+
+      <p class="mb-4">
+        <%= link_to "View Bookings", admin_bookings_url(subdomain: @booking.account.subdomain), { class: "btn btn-success mx-auto mt-2", style: "width: 95%" } %>
+      </p>
+    </div>
+  </div>
+</div>
