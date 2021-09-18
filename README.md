@@ -13,3 +13,5 @@ PerTutor is a rails project I built personally from scratch. It is a saas applic
 1. `bin/run`
 2. Please visit the localhost as this **http://lvh.me:3000/**
 
+## Project homepage
+![PerTutor](https://github.com/earnestaddae/ernestaddae/blob/main/app/assets/images/pertutor.png)
